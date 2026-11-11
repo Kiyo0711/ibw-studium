@@ -649,9 +649,9 @@ views.klausuren = () => {
 /* Module & Noten */
 views.module = () => {
   const sem = state.settings.sem, mods = semMods(sem), st = stats(), ss = stats(mods);
-  const needFocus = mods.some(m => m.type === 'schwerpunkt') && !state.settings.focus;
+  const hasFocus = mods.some(m => m.type === 'schwerpunkt'), cur = state.settings.focus;
   return `<header class="page-head"><h1>${sem}. Semester</h1>${window.SEM_NOTES[sem] ? `<p>${window.SEM_NOTES[sem]}</p>` : ''}</header>
-    ${needFocus ? `<p class="notice"><label for="focusPick">Welchen Schwerpunkt hast du gewählt?</label> <select id="focusPick" data-chg="focus"><option value="">Noch offen</option>${window.FOCI.map(f => `<option value="${f.id}">${esc(f.name)}</option>`).join('')}</select></p>` : ''}
+    ${hasFocus ? `<p class="${cur ? 'filter' : 'notice'}"><label for="focusPick">${cur ? 'Dein Schwerpunkt' : 'Welchen Schwerpunkt hast du gewählt?'}</label> <select id="focusPick" data-chg="focus"><option value="">Noch offen</option>${window.FOCI.map(f => `<option value="${f.id}"${f.id === cur ? ' selected' : ''}>${esc(f.name)}</option>`).join('')}</select></p>` : ''}
     <ul class="mods">${mods.map(m => {
       const n = state.notes.filter(x => x.module === m.id).length, td = state.todos.filter(t => t.module === m.id && !t.done).length;
       return `<li class="mod s-${m.status}" style="--h:${m.hue}">
