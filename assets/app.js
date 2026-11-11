@@ -608,7 +608,7 @@ views.todos = () => {
     </form>
     <div class="filter"><label for="todoFilter">Anzeigen</label>
       <select id="todoFilter" data-chg="todo-filter"><option value="sem"${f === 'sem' ? ' selected' : ''}>${sem}. Semester und Allgemeines</option><option value="all"${f === 'all' ? ' selected' : ''}>Alle To-dos</option>
-      <optgroup label="Nur ein Fach">${semMods(sem).map(m => `<option value="${m.id}"${f === m.id ? ' selected' : ''}>${esc(m.name)}</option>`).join('')}</optgroup></select></div>
+      <optgroup label="Nur ein Fach">${semMods(sem).map(m => `<option value="${m.id}"${f === m.id ? ' selected' : ''}>${esc(m.name)}</option>`).join('')}</optgroup></select><span class="grow"></span><button type="button" class="btn small" data-act="remind">Erinnerungen aufs Handy</button></div>
     ${open.length ? groups.filter(g => g[1].length).map(([name, items]) => `<section class="todo-group${name === 'Überfällig' ? ' late' : ''}"><h2>${name} <span class="count">${items.length}</span></h2><ul class="todos">${items.map(todoRow).join('')}</ul></section>`).join('')
       : empty(list.length ? 'Alles erledigt' : 'Noch keine To-dos', 'Schreib oben auf, was ansteht: Übungsblatt, Kapitel lesen, Anmeldung zur Prüfung.')}
     ${done.length ? `<section class="todo-group"><h2><button type="button" class="linklike" data-act="toggle-done" aria-expanded="${ui.showDone}">Erledigt <span class="count">${done.length}</span> ${ui.showDone ? 'ausblenden' : 'anzeigen'}</button></h2>
@@ -640,7 +640,7 @@ views.klausuren = () => {
         </p>
       </div></li>`;
   };
-  return `<header class="page-head row"><h1>Klausurenplan</h1><button type="button" class="btn primary" data-act="exam-new">Prüfung eintragen</button></header>
+  return `<header class="page-head row"><h1>Klausurenplan</h1><span class="row-actions"><button type="button" class="btn" data-act="remind">Erinnerungen aufs Handy</button><button type="button" class="btn primary" data-act="exam-new">Prüfung eintragen</button></span></header>
     ${up.length ? `<ul class="exams">${up.map(card).join('')}</ul>` : empty('Noch keine Prüfung eingetragen', 'Sobald die Hochschule den Prüfungsplan veröffentlicht, trägst du hier Datum, Raum und Hilfsmittel ein. Die Termine erscheinen dann auch im Kalender und auf der Startseite.')}
     ${missing.length ? `<section class="hint"><h2>Im ${sem}. Semester noch ohne Prüfungstermin</h2><p class="links">${missing.map(m => `<button type="button" class="chip as-btn" style="--h:${m.hue}" data-act="exam-new" data-mod="${m.id}">${esc(m.name)} eintragen</button>`).join('')}</p></section>` : ''}
     ${past.length ? `<section><h2 class="sub">Geschrieben</h2><ul class="past">${past.map(x => { const m = modOf(x.module); return `<li><button type="button" data-act="exam-edit" data-id="${x.id}"><span>${fmt(parseYmd(x.date), { day: 'numeric', month: 'short', year: 'numeric' })}</span><b>${esc(m ? m.name : 'Prüfung')}</b><span>${m && m.grade ? 'Note ' + esc(m.grade) : 'Note noch offen'}</span></button></li>`; }).join('')}</ul><p class="muted">Noten trägst du unter <a href="#/module">Module & Noten</a> ein.</p></section>` : ''}`;
@@ -747,6 +747,12 @@ views.einstellungen = () => {
       <form class="quick" data-sub="link-add"><input name="label" placeholder="Name, z. B. Hochschul-Mail" aria-label="Name" required><input name="url" type="url" placeholder="https://…" aria-label="Adresse" required><button class="btn">Hinzufügen</button></form>
     </section>
     <section class="panel set">
+      <h2>Erinnerungen aufs Handy</h2>
+      <p>Überträgt alle kommenden Prüfungen und To-dos mit Datum in den Kalender deines Handys. Der Kalender erinnert dich dann von selbst, auch wenn diese Website geschlossen ist.</p>
+      <p class="muted">Prüfungen: eine Woche vorher, am Tag davor und zwei Stunden vor Beginn. To-dos: am Vorabend um 18 Uhr und am Fälligkeitstag um 8 Uhr. Nach neuen Einträgen einfach noch einmal übertragen, bestehende Termine werden dabei aktualisiert statt verdoppelt.</p>
+      <p><button type="button" class="btn primary" data-act="remind">In den Kalender übertragen</button></p>
+    </section>
+    <section class="panel set">
       <h2>Sicherung</h2>
       <p>Deine To-dos, Noten, Prüfungen und Lernzettel liegen nur in diesem Browser auf diesem Gerät, nicht auf GitHub. Sichere sie regelmäßig als Datei. Mit derselben Datei überträgst du alles auf ein anderes Gerät.</p>
       <p class="muted">${state.lastBackup ? `Letzte Sicherung am ${fmt(new Date(state.lastBackup), { day: 'numeric', month: 'long', year: 'numeric' })}.` : 'Noch keine Sicherung erstellt.'}</p>
@@ -754,6 +760,47 @@ views.einstellungen = () => {
       <p><button type="button" class="btn ghost danger" data-act="reset">Alle Daten in diesem Browser löschen</button></p>
     </section>`;
 };
+
+/* ───────── Erinnerungen: Export in den Handy-Kalender ───────── */
+function exportReminders() {
+  const E = v => String(v || '').replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/([,;])/g, '\\$1');
+  const D = d => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+  const T = d => `${D(d)}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+  const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+  const alarm = (trigger, text) => ['BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${E(text)}`, `TRIGGER:${trigger}`, 'END:VALARM'];
+  const out = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//IBW Studium//DE', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:IBW Studium'];
+  let n = 0;
+  for (const x of state.exams) {
+    if (!x.date || daysUntil(x.date) < 0) continue;
+    const m = modOf(x.module), title = `${x.kind || 'Klausur'}: ${m ? m.name : 'Prüfung'}`;
+    const desc = [x.aids ? `Hilfsmittel: ${x.aids}` : '', x.registered ? 'Angemeldet' : 'Noch nicht angemeldet!', x.notes].filter(Boolean).join('\n');
+    out.push('BEGIN:VEVENT', `UID:exam-${x.id}@ibw-studium`, `DTSTAMP:${stamp}`, `SUMMARY:${E(title)}`);
+    if (x.time) {
+      const st = new Date(`${x.date}T${x.time}`);
+      out.push(`DTSTART:${T(st)}`, `DTEND:${T(new Date(+st + (+x.duration || 90) * 6e4))}`, ...alarm('-P7D', `${title} in einer Woche`), ...alarm('-P1D', `${title} morgen`), ...alarm('-PT2H', `${title} in 2 Stunden`));
+    } else {
+      const st = parseYmd(x.date);
+      out.push(`DTSTART;VALUE=DATE:${D(st)}`, `DTEND;VALUE=DATE:${D(addDays(st, 1))}`, ...alarm('-P6DT15H', `${title} in einer Woche`), ...alarm('-PT15H', `${title} morgen`));
+    }
+    if (x.room) out.push(`LOCATION:${E(x.room)}`);
+    if (desc) out.push(`DESCRIPTION:${E(desc)}`);
+    out.push('END:VEVENT'); n++;
+  }
+  for (const t of state.todos) {
+    if (!t.due || t.done || daysUntil(t.due) < 0) continue;
+    const m = modOf(t.module), st = parseYmd(t.due), title = `To-do: ${t.text}`;
+    out.push('BEGIN:VEVENT', `UID:todo-${t.id}@ibw-studium`, `DTSTAMP:${stamp}`, `SUMMARY:${E(title)}`, `DTSTART;VALUE=DATE:${D(st)}`, `DTEND;VALUE=DATE:${D(addDays(st, 1))}`, 'TRANSP:TRANSPARENT');
+    if (m) out.push(`DESCRIPTION:${E(m.name)}`);
+    out.push(...alarm('-PT6H', `Morgen fällig: ${t.text}`), ...alarm('PT8H', `Heute fällig: ${t.text}`), 'END:VEVENT'); n++;
+  }
+  if (!n) return toast('Es gibt noch keine Prüfung und kein To-do mit Datum in der Zukunft.');
+  out.push('END:VCALENDAR');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([out.join('\r\n')], { type: 'text/calendar' }));
+  a.download = 'ibw-erinnerungen.ics'; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  toast(`${n} ${n === 1 ? 'Termin' : 'Termine'} mit Erinnerung exportiert. Datei öffnen und zum Kalender hinzufügen.`);
+}
 
 /* ───────── Karteikarten ───────── */
 function studyCards(note) {
@@ -826,6 +873,7 @@ const act = {
   },
   cards(el) { const n = byId(state.notes, el.dataset.id); if (n) studyCards(n); },
   print() { window.print(); },
+  remind() { exportReminders(); },
   'ics-clear'() { state.ics = ''; save(); loadLectures(); toast('Datei entfernt'); },
   'link-del'(el) { state.links.splice(+el.dataset.i, 1); save(); render(); },
   backup() {
