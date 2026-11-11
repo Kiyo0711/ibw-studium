@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IBW Studium – Hochschule Aalen</title>
+<meta name="description" content="Studien-Dashboard für Internationale Betriebswirtschaft an der Hochschule Aalen: Stundenplan, To-dos, Klausuren, Noten und Lernzettel.">
+<meta name="theme-color" content="#1D3FD1">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon.svg">
+<link rel="preload" href="assets/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<div class="shell">
+  <aside class="side">
+    <a class="brand" href="#/heute">
+      <span class="brand-mark" aria-hidden="true">IBW</span>
+      <span class="brand-text">Studium<small>Hochschule Aalen</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Bereiche"></nav>
+    <div class="side-foot" id="sideFoot"></div>
+  </aside>
+
+  <div class="content">
+    <header class="top">
+      <div class="rail" id="rail" role="tablist" aria-label="Semester wählen"></div>
+    </header>
+    <main id="main" tabindex="-1"></main>
+  </div>
+</div>
+
+<nav class="tabbar" id="tabbar" aria-label="Bereiche"></nav>
+
+<dialog id="dlg" class="dlg"></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

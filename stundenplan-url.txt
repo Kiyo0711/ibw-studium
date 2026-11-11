@@ -1,0 +1,6 @@
+# Kalender-Links (iCal) aus dem sPlan der Hochschule Aalen, einer pro Zeile.
+# Zu jedem neuen Semester den neuen Link einfach als weitere Zeile darunter einfügen.
+# Zeilen mit # am Anfang werden ignoriert.
+
+# 1. Semester, Wintersemester 2026/27
+https://vorlesungen.htw-aalen.de/splan/ical?lan=de&puid=54&type=pg&pgid=14700

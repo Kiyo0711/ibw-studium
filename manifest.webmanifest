@@ -1,0 +1,12 @@
+{
+  "name": "IBW Studium – Hochschule Aalen",
+  "short_name": "IBW Studium",
+  "description": "Stundenplan, To-dos, Klausuren, Noten und Lernzettel für das IBW-Studium.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EEF1F6",
+  "theme_color": "#1D3FD1",
+  "lang": "de",
+  "icons": [{ "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
