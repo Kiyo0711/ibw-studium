@@ -6,19 +6,28 @@ Mein Studien-Dashboard für **Internationale Betriebswirtschaft (B.A.) an der Ho
 
 ## Was drin ist
 
-- **Heute**: nächste Vorlesungen, offene To-dos, nächste Prüfungen, Studienfortschritt
-- **Kalender**: Stundenplan aus dem sPlan der Hochschule, eigene Termine, Prüfungen und Fristen (Woche, Monat, Liste)
+- **Heute**: nächste Vorlesungen, Termine der Hochschule, Lernzeit, To-dos, Prüfungen, Studienfortschritt
+- **Kalender**: Stundenplan aus dem sPlan, offizielle Hochschultermine, eigene Termine, Prüfungen und Fristen. Fremde Übungsgruppen lassen sich ausblenden.
 - **To-dos**: mit Fach, Fälligkeit und Priorität
-- **Klausurenplan**: Datum, Raum, Hilfsmittel, Anmeldung, Countdown
-- **Module & Noten**: alle 7 Semester nach Studienverlaufsplan (210 CP), Notenschnitt nach CP gewichtet
-- **Lernzettel**: pro Fach, mit Vorlagen, Karteikarten-Modus und Druck/PDF
+- **Klausurenplan**: Datum, Raum, Hilfsmittel, Anmeldung, Countdown und automatischer Lernplan
+- **Module & Noten**: alle 7 Semester (210 CP), Kontakt zu Dozent:innen, Notenschnitt und Wunschschnitt-Rechner
+- **Lernzettel**: pro Fach, mit Vorlagen, Karteikarten-Modus, Vorlesungsmitschriften und Druck/PDF
+- **Planung**: Praxissemester (Bewerbungen), Auslandssemester (Partnerhochschulen), Bachelorthesis, jeweils mit Checkliste
+- **Lern-Timer**: Fokus- und Pausenphasen, zählt die Lernzeit pro Fach
+- **Erinnerungen**: Prüfungen, To-dos und Fristen in den Handy-Kalender übertragen
+- **Offline nutzbar** und als App auf dem Home-Bildschirm
 
 Oben wählst du das Semester (1–7). Alles richtet sich danach.
 
 ## Wo liegen meine Daten?
 
-To-dos, Noten, Prüfungen und Lernzettel werden **nur im Browser auf deinem Gerät** gespeichert, nicht in diesem Repository.
-Unter *Einstellungen → Sicherung* lädst du alles als Datei herunter und spielst es auf einem anderen Gerät wieder ein.
+Im Browser auf deinem Gerät, nicht in diesem Repository.
+Unter *Einstellungen → Handy und Laptop abgleichen* kannst du deine Geräte verbinden. Dann liegt zusätzlich eine Kopie in einem **privaten Gist** in deinem GitHub-Konto (`ibw-studium-daten.json`), über den sich die Geräte abgleichen. Den Gist bitte nicht löschen.
+Unter *Einstellungen → Sicherung* lädst du außerdem jederzeit alles als Datei herunter.
+
+## Hochschultermine aktualisieren
+
+Die offiziellen Termine stehen in `assets/data.js` unter `TERMS`. Sobald die Hochschule den Terminplan für das nächste Semester veröffentlicht, dort neue Zeilen ergänzen.
 
 ## Stundenplan für ein neues Semester
 

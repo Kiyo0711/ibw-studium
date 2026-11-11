@@ -27,24 +27,27 @@ const ICON = {
   module: '<path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5" transform="scale(.92) translate(1 0)"/>',
   lernzettel: '<path d="M6 3h12a1 1 0 0 1 1 1v13l-4 4H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM15 21v-4h4M9 8h6M9 12h6"/>',
   einstellungen: '<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/>',
+  planung: '<path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
+  timer: '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9.5 2.5h5"/>',
   mehr: '<circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/>'
 };
 const icon = n => `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[n]}</svg>`;
 
 const NAV = [
   ['heute', 'Heute'], ['kalender', 'Kalender'], ['todos', 'To-dos'], ['klausuren', 'Klausuren'],
-  ['module', 'Module & Noten'], ['lernzettel', 'Lernzettel'], ['einstellungen', 'Einstellungen']
+  ['module', 'Module & Noten'], ['lernzettel', 'Lernzettel'], ['planung', 'Planung'], ['einstellungen', 'Einstellungen']
 ];
 
 /* ───────── Daten ───────── */
 const defaults = () => ({
   v: 1,
-  settings: { sem: 1, theme: 'auto', focus: '', name: '' },
+  settings: { sem: 1, theme: 'auto', focus: '', name: '', goal: '', parOk: [] },
   mods: {}, custom: [], todos: [], exams: [], notes: [], events: [],
+  study: [], apps: [], checks: [], hidden: [], deleted: {}, timer: null,
   links: [
-    { label: 'Canvas', url: 'https://aalen.instructure.com' },
-    { label: 'Stundenplan (sPlan)', url: 'https://vorlesungen.htw-aalen.de/splan/' },
-    { label: 'Hochschule Aalen', url: 'https://www.hs-aalen.de' }
+    { id: 'l-canvas', label: 'Canvas', url: 'https://aalen.instructure.com' },
+    { id: 'l-splan', label: 'Stundenplan (sPlan)', url: 'https://vorlesungen.htw-aalen.de/splan/' },
+    { id: 'l-hs', label: 'Hochschule Aalen', url: 'https://www.hs-aalen.de' }
   ],
   ics: '', lastBackup: null
 });
@@ -54,14 +57,22 @@ try {
   const raw = localStorage.getItem(KEY);
   if (raw) { const s = JSON.parse(raw); state = { ...defaults(), ...s, settings: { ...defaults().settings, ...(s.settings || {}) } }; }
 } catch (e) { /* Speicher nicht lesbar: mit leerem Stand starten */ }
+const fixState = () => {
+  const d = defaults();
+  for (const k of Object.keys(d)) if (state[k] === undefined || state[k] === null && k !== 'timer') state[k] = d[k];
+  state.settings = { ...d.settings, ...state.settings };
+  state.links.forEach(l => { if (!l.id) l.id = 'l-' + String(l.url).replace(/\W+/g, '').slice(-40); });
+};
+fixState();
 
 let saveTimer = null, storageOk = true;
+function persist() {
+  try { localStorage.setItem(KEY, JSON.stringify(state)); storageOk = true; }
+  catch (e) { if (storageOk) toast('Speichern nicht möglich. Der Browser-Speicher ist voll oder gesperrt.'); storageOk = false; }
+}
 function save() {
   clearTimeout(saveTimer);
-  saveTimer = setTimeout(() => {
-    try { localStorage.setItem(KEY, JSON.stringify(state)); storageOk = true; }
-    catch (e) { if (storageOk) toast('Speichern nicht möglich. Der Browser-Speicher ist voll oder gesperrt.'); storageOk = false; }
-  }, 150);
+  saveTimer = setTimeout(() => { stamp(); persist(); schedulePush(); }, 150);
 }
 
 const ui = { calView: 'week', calCursor: today(), todoFilter: 'sem', showDone: false, noteMode: null, search: '' };
@@ -77,7 +88,7 @@ function allModules() {
       const f = window.FOCI.find(f => f.id === state.settings.focus);
       if (f) name = `Schwerpunkt: ${f.name}`;
     }
-    return { ...m, name, cp: o.cp ?? m.cp, prof: o.prof || '', info: o.info || '', status: o.status || 'offen', grade: o.grade ?? '', hue: HUES[i % HUES.length], custom: state.custom.includes(m) };
+    return { ...m, name, cp: o.cp ?? m.cp, prof: o.prof || '', email: o.email || '', hours: o.hours || '', nograde: o.nograde ?? m.type === 'praxis', info: o.info || '', status: o.status || 'offen', grade: o.grade ?? '', hue: HUES[i % HUES.length], custom: state.custom.includes(m) };
   });
 }
 const modOf = id => allModules().find(m => m.id === id) || null;
@@ -91,7 +102,7 @@ function stats(mods = allModules()) {
     cpAll += m.cp;
     if (m.status === 'bestanden') cpDone += m.cp;
     const g = gradeNum(m.grade);
-    if (g !== null && g >= 1 && g <= 4) { w += g * m.cp; wcp += m.cp; }
+    if (!m.nograde && g !== null && g >= 1 && g <= 4) { w += g * m.cp; wcp += m.cp; }
   }
   return { cpDone, cpAll, avg: wcp ? w / wcp : null };
 }
@@ -179,6 +190,15 @@ async function loadLectures() {
 }
 
 const cleanTitle = t => t.replace(/\s*\(\d[\d-]*\)\s*$/, '').trim();
+const roomOf = l => String(l || '').replace(/,?\s*Canvas\s*$/i, '').trim();
+const WD = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+const lecKeys = e => ({
+  one: 'one:' + (e.uid || cleanTitle(e.title) + '|' + +e.start),
+  series: 's:' + cleanTitle(e.title) + '|' + e.start.getDay() + '|' + hm(e.start) + '|' + (e.location || '')
+});
+function termItems() {
+  return (window.TERMS || []).map(([a, b, title, imp], i) => ({ id: 'term' + i, start: parseYmd(a), end: parseYmd(b || a), title, imp: !!imp }));
+}
 const matchCache = new Map();
 function matchModule(title) {
   const key = state.settings.sem + '|' + title;
@@ -196,12 +216,30 @@ const hashHue = s => { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(
 /* Alle Termine in einem Zeitraum: Vorlesungen, eigene Termine, Klausuren, To-do-Fristen */
 let evIndex = new Map();
 function getEvents(from, to) {
-  const out = [];
+  const out = [], hid = new Set(state.hidden.map(h => h.id));
   lectures.forEach((e, i) => {
     if (e.end <= from || e.start >= to) return;
+    const keys = lecKeys(e);
+    if (hid.has(keys.one) || hid.has(keys.series)) return;
     const m = matchModule(e.title);
-    out.push({ id: 'L' + i, kind: 'lecture', title: cleanTitle(e.title), start: e.start, end: e.end, allDay: e.allDay, location: e.location, url: e.url, desc: e.desc, mod: m, hue: m ? m.hue : hashHue(e.title) });
+    out.push({ id: 'L' + i, kind: 'lecture', title: cleanTitle(e.title), start: e.start, end: e.end, allDay: e.allDay, location: e.location, url: e.url, desc: e.desc, mod: m, hue: m ? m.hue : hashHue(e.title), keys, raw: e });
   });
+  for (const t of termItems()) {
+    const len = Math.round((t.end - t.start) / 864e5) + 1;
+    const days = len <= 14 ? Array.from({ length: len }, (_, k) => [addDays(t.start, k), t.title])
+      : [[t.start, `Beginn: ${t.title}`], [t.end, `Ende: ${t.title}`]];
+    for (const [d, title] of days) {
+      if (d < startOfDay(from) || d >= to) continue;
+      out.push({ id: `U${t.id}-${ymd(d)}`, kind: 'uni', title, start: d, end: addDays(d, 1), allDay: true, hue: 48, imp: t.imp, term: t });
+    }
+  }
+  for (const c of state.checks) {
+    if (!c.due || c.done) continue;
+    const start = parseYmd(c.due);
+    if (start < startOfDay(from) || start >= to) continue;
+    const L = window.CHECKLISTS[c.list];
+    out.push({ id: 'C' + c.id, kind: 'check', title: `${L ? L.title + ': ' : ''}${c.text}`, start, end: addDays(start, 1), allDay: true, hue: 215, ref: c });
+  }
   for (const e of state.events) {
     const start = new Date(`${e.date}T${e.start || '00:00'}`), end = new Date(`${e.date}T${e.end || e.start || '23:59'}`);
     if (end < from || start >= to) continue;
@@ -277,24 +315,31 @@ function renderChrome() {
   const [view] = route(), sem = state.settings.sem;
   $('#nav').innerHTML = NAV.map(([id, label]) => `<a href="#/${id}"${id === view ? ' aria-current="page"' : ''}>${icon(id)}<span>${label}</span></a>`).join('');
   const tabs = [['heute', 'Heute'], ['kalender', 'Kalender'], ['todos', 'To-dos'], ['lernzettel', 'Lernzettel']];
-  const more = ['klausuren', 'module', 'einstellungen'].includes(view);
+  const more = ['klausuren', 'module', 'planung', 'einstellungen'].includes(view);
   $('#tabbar').innerHTML = tabs.map(([id, label]) => `<a href="#/${id}"${id === view ? ' aria-current="page"' : ''}>${icon(id)}<span>${label}</span></a>`).join('')
     + `<button type="button" data-act="more"${more ? ' aria-current="page"' : ''}>${icon('mehr')}<span>Mehr</span></button>`;
   const st = stats();
-  $('#sideFoot').innerHTML = `<div class="foot-cp"><div class="bar"><i style="width:${(st.cpDone / st.cpAll * 100).toFixed(1)}%"></i></div><span>${st.cpDone} von ${st.cpAll} CP</span></div>`;
+  $('#sideFoot').innerHTML = `<div class="foot-cp"><div class="bar"><i style="width:${(st.cpDone / st.cpAll * 100).toFixed(1)}%"></i></div><span>${st.cpDone} von ${st.cpAll} CP</span></div><p class="sync-line" data-sync-status>${esc(syncLabel())}</p>`;
   $('#rail').innerHTML = `<span class="rail-label">Semester</span><div class="rail-track">` + [1, 2, 3, 4, 5, 6, 7].map(s => {
     const ms = semMods(s), done = ms.length && ms.every(m => m.status === 'bestanden');
     return `<button type="button" role="tab" class="stop${done ? ' done' : ''}" aria-selected="${s === sem}" aria-label="${s}. Semester${done ? ', abgeschlossen' : ''}" data-act="sem" data-sem="${s}">${s}</button>`;
   }).join('') + `</div>`;
 }
 
+let baseTitle = document.title;
 function render() {
+  const r0 = route();
+  if (r0[0] === 'verbinden') {
+    history.replaceState(null, '', location.pathname + location.search + '#/einstellungen');
+    if (r0[1] && r0[1] !== sync.token) connectSync(r0[1]);
+  }
   renderChrome();
   const [view, a, b] = route();
   evIndex = new Map();
   const fn = views[view] || views.heute;
   main.innerHTML = fn(a, b);
-  document.title = `${(NAV.find(n => n[0] === view) || NAV[0])[1]} – IBW Studium`;
+  baseTitle = document.title = `${(NAV.find(n => n[0] === view) || NAV[0])[1]} – IBW Studium`;
+  drawTimer(true);
 }
 
 /* ───────── Dialoge ───────── */
@@ -384,26 +429,49 @@ function moduleForm(m) {
       { name: 'name', label: 'Name', value: m.name, required: true },
       { name: 'cp', label: 'Credit Points', type: 'number', value: m.cp, half: true, attrs: ' min="0" max="60"' },
       { name: 'prof', label: 'Dozent:in', value: m.prof, half: true },
-      { name: 'info', label: 'Notizen zum Modul', type: 'textarea', value: m.info, placeholder: 'Prüfungsform, Literatur, Canvas-Kurs …' }
+      { name: 'email', label: 'E-Mail', type: 'email', value: m.email, half: true },
+      { name: 'hours', label: 'Sprechstunde', value: m.hours, half: true, placeholder: 'z. B. Di 14 Uhr, Raum 205' },
+      { name: 'info', label: 'Notizen zum Modul', type: 'textarea', value: m.info, placeholder: 'Prüfungsform, Literatur, Canvas-Kurs …' },
+      { name: 'nograde', label: 'Unbenotet (zählt nicht zum Notenschnitt)', type: 'checkbox', value: isNew ? false : m.nograde }
     ],
     onSave: d => {
       if (!d.name.trim()) return;
       let id = m.id;
       if (isNew) { id = 'c-' + uid(); state.custom.push({ id, sem: m.sem, cp: +d.cp || 0, type: 'wahl', name: d.name.trim(), match: [] }); }
-      setMod(id, { name: d.name.trim(), cp: +d.cp || 0, prof: d.prof, info: d.info });
+      setMod(id, { name: d.name.trim(), cp: +d.cp || 0, prof: d.prof, email: d.email.trim(), hours: d.hours.trim(), info: d.info, nograde: d.nograde });
     },
     onDelete: m.custom ? () => { state.custom = state.custom.filter(c => c.id !== m.id); delete state.mods[m.id]; save(); } : null
   });
 }
 
+const rangeText = (a, b) => +a === +b ? fmt(a, { weekday: 'short', day: 'numeric', month: 'short' })
+  : `${fmt(a, { weekday: 'short', day: 'numeric', month: 'short' })} bis ${fmt(b, { weekday: 'short', day: 'numeric', month: 'short' })}`;
+function parallelOf(e) {
+  const hid = new Set(state.hidden.map(h => h.id));
+  return lectures.filter(o => o !== e.raw && cleanTitle(o.title) === e.title && o.start < e.end && o.end > e.start
+    && (o.location || '') !== (e.location || '') && !hid.has(lecKeys(o).one) && !hid.has(lecKeys(o).series));
+}
 function eventInfo(e) {
   if (e.kind === 'own') return eventForm(e.ref);
   if (e.kind === 'exam') return examForm(e.ref);
   if (e.kind === 'todo') return todoForm(e.ref);
+  if (e.kind === 'check') return checkForm(e.ref);
+  if (e.kind === 'uni') {
+    const t = e.term;
+    return openInfo(`<h2>${esc(t.title)}</h2><dl class="facts"><dt>Wann</dt><dd>${rangeText(t.start, t.end)}</dd></dl>
+      <p class="muted">Aus dem offiziellen Terminplan der Hochschule Aalen. Änderungen sind möglich.</p>
+      <p class="row-actions"><a class="btn" href="${esc(window.TERMS_SOURCE)}" target="_blank" rel="noopener">Terminplan öffnen</a></p>`);
+  }
   const when = `${fmt(e.start, { weekday: 'long', day: 'numeric', month: 'long' })}, ${hm(e.start)} bis ${hm(e.end)} Uhr`;
+  const par = parallelOf(e), room = roomOf(e.location);
+  const rooms = [...new Set(par.map(o => roomOf(o.location) || 'einem anderen Raum'))];
+  const lecNote = e.mod && state.notes.find(n => n.lec === e.keys.one);
   openInfo(`<h2>${esc(e.title)}</h2>${e.mod ? `<p>${chip(e.mod)}</p>` : ''}
     <dl class="facts"><dt>Wann</dt><dd>${when}</dd>${e.location ? `<dt>Wo</dt><dd>${esc(e.location)}</dd>` : ''}${e.desc ? `<dt>Info</dt><dd>${esc(e.desc)}</dd>` : ''}</dl>
-    <p class="row-actions">${e.url ? `<a class="btn" href="${esc(e.url)}" target="_blank" rel="noopener">In Canvas öffnen</a>` : ''}${e.mod ? `<a class="btn" href="#/lernzettel/${e.mod.id}" data-close>Lernzettel zum Fach</a>` : ''}</p>`);
+    ${par.length ? `<p class="notice">Zur selben Zeit findet ${esc(e.title)} auch in ${rooms.map(r => 'Raum ' + esc(r)).join(' und ')} statt. Das sind vermutlich verschiedene Gruppen. Wenn das hier nicht deine ist, blende sie unten aus.</p>` : ''}
+    <p class="row-actions">${e.url ? `<a class="btn" href="${esc(e.url)}" target="_blank" rel="noopener">In Canvas öffnen</a>` : ''}${e.mod ? `<button type="button" class="btn" data-act="lec-note" data-id="${e.id}">${lecNote ? 'Mitschrift öffnen' : 'Mitschrift anlegen'}</button><a class="btn" href="#/lernzettel/${e.mod.id}" data-close>Lernzettel zum Fach</a>` : ''}</p>
+    <h3 class="dlg-sub">Nicht deine Veranstaltung?</h3>
+    <p class="row-actions"><button type="button" class="btn" data-act="hide-lec" data-mode="series" data-id="${e.id}">Jeden ${WD[e.start.getDay()]} um ${hm(e.start)}${room ? ` in Raum ${esc(room)}` : ''} ausblenden</button><button type="button" class="btn ghost" data-act="hide-lec" data-mode="one" data-id="${e.id}">Nur diesen Termin ausblenden</button></p>`);
 }
 
 /* ───────── Bausteine ───────── */
@@ -437,8 +505,8 @@ const empty = (title, text, action = '') => `<div class="empty"><h3>${title}</h3
 
 function agendaRow(e, now = new Date()) {
   const live = !e.allDay && e.start <= now && e.end > now, past = e.end <= now;
-  return `<li><button type="button" class="slot${live ? ' live' : ''}${past ? ' past' : ''} k-${e.kind}" style="--h:${e.hue}" data-act="ev" data-id="${e.id}">
-    <span class="slot-time">${e.allDay ? 'ganztägig' : `${hm(e.start)}<small>${hm(e.end)}</small>`}</span>
+  return `<li><button type="button" class="slot${live ? ' live' : ''}${past && !e.allDay ? ' past' : ''}${e.imp ? ' imp' : ''} k-${e.kind}" style="--h:${e.hue}" data-act="ev" data-id="${e.id}">
+    <span class="slot-time">${e.kind === 'uni' ? 'Hochschule' : e.allDay ? 'ganztägig' : `${hm(e.start)}<small>${hm(e.end)}</small>`}</span>
     <span class="slot-main"><b>${esc(e.title)}</b><span>${[live ? 'läuft gerade' : '', e.location].filter(Boolean).map(esc).join(', ')}</span></span>
   </button></li>`;
 }
@@ -449,9 +517,10 @@ const views = {};
 views.heute = () => {
   const now = new Date(), t0 = today(), sem = state.settings.sem;
   const h = now.getHours(), hello = h < 5 ? 'Gute Nacht' : h < 11 ? 'Guten Morgen' : h < 18 ? 'Hallo' : 'Guten Abend';
-  const upcoming = getEvents(now, addDays(t0, 22)).filter(e => e.kind !== 'todo');
+  const isPlan = e => !['todo', 'check', 'uni'].includes(e.kind);
+  const upcoming = getEvents(now, addDays(t0, 22)).filter(isPlan);
   const byDay = new Map();
-  for (const e of getEvents(t0, addDays(t0, 22)).filter(e => e.kind !== 'todo')) {
+  for (const e of getEvents(t0, addDays(t0, 22)).filter(isPlan)) {
     const k = ymd(e.start); if (!byDay.has(k)) byDay.set(k, []); byDay.get(k).push(e);
   }
   const todayEv = byDay.get(ymd(t0)) || [];
@@ -477,10 +546,14 @@ views.heute = () => {
       <p>${fmt(now, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}, ${sem}. Semester</p>
     </header>
     <div class="cols">
+      <div class="stack">
       <section class="panel plan">
         <div class="panel-head"><h2>${planTitle}</h2><a href="#/kalender">Ganze Woche</a></div>
         ${plan}
       </section>
+      ${termsPanel()}
+      ${studyPanel()}
+      </div>
       <div class="stack">
         <section class="panel">
           <div class="panel-head"><h2>To-dos</h2><a href="#/todos">Alle ${open.length ? `(${open.length})` : ''}</a></div>
@@ -518,7 +591,7 @@ function layoutDay(evs) {
 
 views.kalender = () => {
   const v = ui.calView, c = ui.calCursor, t0 = today();
-  let body, title;
+  let body, title, parNotice = '';
   if (v === 'week') {
     const one = narrow.matches;
     let days;
@@ -531,6 +604,9 @@ views.kalender = () => {
     }
     const evs = getEvents(days[0], addDays(days[days.length - 1], 1));
     const timed = evs.filter(e => !e.allDay), allDay = evs.filter(e => e.allDay);
+    const lecs = timed.filter(e => e.kind === 'lecture'), par = new Set();
+    for (const a of lecs) for (const b of lecs) if (a !== b && a.title === b.title && a.start < b.end && b.start < a.end && (a.location || '') !== (b.location || '') && !state.settings.parOk.includes(a.title)) par.add(a.title);
+    parNotice = par.size ? `<p class="notice">${[...par].map(esc).join(' und ')} ${par.size > 1 ? 'finden' : 'findet'} zum Teil gleichzeitig in mehreren Räumen statt. Tipp auf die Gruppe, in die du nicht gehst, und blende sie aus. <button type="button" class="btn small ghost" data-act="par-ok" data-t="${esc(JSON.stringify([...par]))}">Passt so</button></p>` : '';
     let h0 = 8, h1 = 18;
     timed.forEach(e => { h0 = Math.min(h0, e.start.getHours()); h1 = Math.max(h1, e.end.getHours() + (e.end.getMinutes() ? 1 : 0)); });
     h1 = Math.min(24, Math.max(h1, h0 + 6));
@@ -540,8 +616,8 @@ views.kalender = () => {
     body = `<div class="wk" style="--n:${days.length};--H:${H}px;--rows:${h1 - h0}">
       <div class="wk-corner"></div>
       ${days.map(d => `<div class="wk-day${+d === +t0 ? ' is-today' : ''}"><span>${fmt(d, { weekday: 'short' })}</span> <b>${d.getDate()}.</b></div>`).join('')}
-      <div class="wk-corner wk-allday-label">${allDay.length ? 'Fristen' : ''}</div>
-      ${days.map(d => `<div class="wk-allday">${allDay.filter(e => ymd(e.start) === ymd(d)).map(e => `<button type="button" class="pill k-${e.kind}" style="--h:${e.hue}" data-act="ev" data-id="${e.id}">${esc(e.title)}</button>`).join('')}</div>`).join('')}
+      <div class="wk-corner wk-allday-label">${allDay.length ? 'Ganztags' : ''}</div>
+      ${days.map(d => `<div class="wk-allday">${allDay.filter(e => ymd(e.start) === ymd(d)).map(e => `<button type="button" class="pill k-${e.kind}${e.imp ? ' imp' : ''}" style="--h:${e.hue}" data-act="ev" data-id="${e.id}">${esc(e.title)}</button>`).join('')}</div>`).join('')}
       <div class="wk-hours">${Array.from({ length: h1 - h0 }, (_, i) => `<span>${pad(h0 + i)}:00</span>`).join('')}</div>
       ${days.map(d => {
         const list = layoutDay(timed.filter(e => ymd(e.start) === ymd(d)));
@@ -563,7 +639,7 @@ views.kalender = () => {
       const list = evs.filter(e => ymd(e.start) === ymd(d));
       cells.push(`<div class="mcell${d.getMonth() !== c.getMonth() ? ' out' : ''}${+d === +t0 ? ' is-today' : ''}" data-act="cal-goto" data-date="${ymd(d)}" role="button" tabindex="0" aria-label="${fmt(d, { day: 'numeric', month: 'long' })}, ${list.length} Termine">
         <span class="mnum">${d.getDate()}</span>
-        ${list.slice(0, 3).map(e => `<span class="mchip k-${e.kind}" style="--h:${e.hue}">${e.allDay ? '' : `<small>${hm(e.start)}</small> `}${esc(e.title)}</span>`).join('')}
+        ${list.slice(0, 3).map(e => `<span class="mchip k-${e.kind}${e.imp ? ' imp' : ''}" style="--h:${e.hue}">${e.allDay ? '' : `<small>${hm(e.start)}</small> `}${esc(e.title)}</span>`).join('')}
         ${list.length > 3 ? `<span class="mmore">+${list.length - 3} weitere</span>` : ''}
         ${list.length ? `<span class="mdots" aria-hidden="true">${list.slice(0, 4).map(e => `<i class="k-${e.kind}" style="--h:${e.hue}"></i>`).join('')}</span>` : ''}
       </div>`);
@@ -585,7 +661,7 @@ views.kalender = () => {
       <div class="seg" role="group" aria-label="Ansicht">${seg.map(([id, l]) => `<button type="button" aria-pressed="${v === id}" data-act="cal-view" data-view="${id}">${l}</button>`).join('')}</div>
     </div>
     ${lectureMeta.state === 'empty' ? `<p class="notice">Der Stundenplan der Hochschule ist noch nicht geladen. <a href="#/einstellungen">So verbindest du ihn</a></p>` : ''}
-    ${body}`;
+    ${parNotice}${body}`;
 };
 
 /* To-dos */
@@ -626,16 +702,19 @@ views.klausuren = () => {
     const m = modOf(x.module), d = x.date ? daysUntil(x.date) : null;
     const prep = state.todos.filter(t => t.module === x.module && !t.done).length;
     const notes = state.notes.filter(n => n.module === x.module).length;
+    const planDone = state.todos.filter(t => t.plan === x.id);
     return `<li class="exam" style="--h:${m ? m.hue : 215}">
       <div class="exam-when"><b>${x.date ? countdown(x.date) : 'Termin offen'}</b>${x.date ? `<span>${fmt(parseYmd(x.date), { weekday: 'long', day: 'numeric', month: 'long' })}</span>` : ''}${d !== null && d <= 14 && d >= 0 ? `<span class="tag hot">Endspurt</span>` : ''}</div>
       <div class="exam-main">
         <h3>${esc(m ? m.name : 'Prüfung')}</h3>
         <p>${[x.kind || 'Klausur', x.time ? `${x.time} Uhr` : '', x.duration ? `${x.duration} Minuten` : '', x.room ? `Raum ${x.room}` : ''].filter(Boolean).map(esc).join(', ')}</p>
         ${x.aids ? `<p><span class="muted">Hilfsmittel:</span> ${esc(x.aids)}</p>` : ''}${x.notes ? `<p class="exam-notes">${esc(x.notes)}</p>` : ''}
+        ${planDone.length ? `<div class="plan-prog"><span class="bar"><i style="width:${planDone.filter(t => t.done).length / planDone.length * 100}%"></i></span><span>Lernplan: ${planDone.filter(t => t.done).length} von ${planDone.length} Einheiten erledigt</span></div>` : ''}
         <p class="row-actions">
           <label class="check-row"><input type="checkbox" data-chg="exam-reg" data-id="${x.id}"${x.registered ? ' checked' : ''}> Angemeldet</label>
           ${m ? `<a class="btn small" href="#/lernzettel/${m.id}">Lernzettel (${notes})</a>` : ''}
           ${prep ? `<a class="btn small" href="#/todos">${prep === 1 ? '1 offenes To-do' : prep + ' offene To-dos'}</a>` : ''}
+          ${x.date && d > 1 ? `<button type="button" class="btn small" data-act="plan-new" data-id="${x.id}">${planDone.length ? 'Lernplan ändern' : 'Lernplan erstellen'}</button>` : ''}
           <button type="button" class="btn small" data-act="exam-edit" data-id="${x.id}">Bearbeiten</button>
         </p>
       </div></li>`;
@@ -654,8 +733,12 @@ views.module = () => {
     ${hasFocus ? `<p class="${cur ? 'filter' : 'notice'}"><label for="focusPick">${cur ? 'Dein Schwerpunkt' : 'Welchen Schwerpunkt hast du gewählt?'}</label> <select id="focusPick" data-chg="focus"><option value="">Noch offen</option>${window.FOCI.map(f => `<option value="${f.id}"${f.id === cur ? ' selected' : ''}>${esc(f.name)}</option>`).join('')}</select></p>` : ''}
     <ul class="mods">${mods.map(m => {
       const n = state.notes.filter(x => x.module === m.id).length, td = state.todos.filter(t => t.module === m.id && !t.done).length;
+      const studied = state.study.filter(x => x.module === m.id).reduce((a, x) => a + x.min, 0);
       return `<li class="mod s-${m.status}" style="--h:${m.hue}">
-        <div class="mod-name"><h3>${esc(m.name)}</h3><p>${window.TYPES[m.type] || 'Modul'}, ${m.cp} CP${m.prof ? ', ' + esc(m.prof) : ''}</p>${m.info ? `<p class="mod-info">${esc(m.info)}</p>` : ''}</div>
+        <div class="mod-name"><h3>${esc(m.name)}</h3><p>${window.TYPES[m.type] || 'Modul'}, ${m.cp} CP${m.nograde ? ', unbenotet' : ''}${m.prof ? ', ' + esc(m.prof) : ''}</p>
+          ${m.email || m.hours ? `<p class="mod-contact">${m.email ? `<a href="mailto:${esc(m.email)}">${esc(m.email)}</a>` : ''}${m.hours ? `<span>Sprechstunde: ${esc(m.hours)}</span>` : ''}</p>` : ''}
+          ${studied ? `<p class="mod-contact"><span>Gelernt: ${hmin(studied)}</span></p>` : ''}
+          ${m.info ? `<p class="mod-info">${esc(m.info)}</p>` : ''}</div>
         <div class="mod-ctl">
           <label>Status<select data-chg="mod-status" data-id="${m.id}">${[['offen', 'Offen'], ['laufend', 'Läuft'], ['bestanden', 'Bestanden']].map(([v, l]) => `<option value="${v}"${m.status === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
           <label>Note<input data-chg="mod-grade" data-id="${m.id}" value="${esc(m.grade)}" inputmode="decimal" placeholder="–" size="3" maxlength="4"></label>
@@ -667,6 +750,7 @@ views.module = () => {
     <section class="panel overview">
       <div class="panel-head"><h2>Gesamtes Studium</h2><span>${st.cpDone} von ${st.cpAll} CP${st.avg ? `, Schnitt ${st.avg.toFixed(2).replace('.', ',')}` : ''}</span></div>
       <ul class="sem-rows">${[1, 2, 3, 4, 5, 6, 7].map(s => { const x = stats(semMods(s)); return `<li><button type="button" data-act="sem" data-sem="${s}"${s === sem ? ' aria-current="true"' : ''}><span>${s}. Semester</span><span class="bar"><i style="width:${x.cpAll ? x.cpDone / x.cpAll * 100 : 0}%"></i></span><span>${x.cpDone}/${x.cpAll} CP</span><span>${x.avg ? 'Ø ' + x.avg.toFixed(2).replace('.', ',') : ''}</span></button></li>`; }).join('')}</ul>
+      <div class="calc"><label for="goal">Wunschschnitt</label><input id="goal" data-inp="goal" value="${esc(state.settings.goal)}" inputmode="decimal" placeholder="z. B. 2,0" maxlength="3"><p id="goalOut">${goalText()}</p></div>
       <p class="muted">Der Schnitt ist nach Credit Points gewichtet und dient nur zur Orientierung. Verbindlich ist die Berechnung nach deiner Studien- und Prüfungsordnung. Dieses Semester: ${ss.cpDone} von ${ss.cpAll} CP.</p>
     </section>`;
 };
@@ -724,6 +808,7 @@ views.einstellungen = () => {
     ? `${lectures.length} Termine geladen${lectureMeta.updated ? `, zuletzt aktualisiert am ${fmt(new Date(lectureMeta.updated), { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })} Uhr` : ''}.`
     : lectureMeta.state === 'loading' ? 'Wird geladen …' : 'Noch kein Stundenplan geladen.';
   return `<header class="page-head"><h1>Einstellungen</h1></header>
+    ${syncPanel()}
     <section class="panel set">
       <h2>Über dich</h2>
       <div class="flds">
@@ -740,6 +825,7 @@ views.einstellungen = () => {
       <p class="row-actions">${R ? `<a class="btn" href="https://github.com/${R.owner}/${R.name}/edit/${R.branch}/stundenplan-url.txt" target="_blank" rel="noopener">Kalender-Link ändern</a><a class="btn" href="https://github.com/${R.owner}/${R.name}/actions/workflows/stundenplan.yml" target="_blank" rel="noopener">Jetzt aktualisieren</a>` : ''}</p>
       <div class="fld"><label for="icsFile">Oder eine .ics-Datei direkt in diesem Browser laden</label><input id="icsFile" type="file" accept=".ics,text/calendar" data-chg="ics-file"></div>
       ${state.ics ? `<p><button type="button" class="btn ghost" data-act="ics-clear">Geladene Datei wieder entfernen</button></p>` : ''}
+      ${state.hidden.length ? `<h3 class="set-sub">Ausgeblendete Termine</h3><ul class="link-list">${state.hidden.map(h => `<li><span>${esc(h.label)}</span><button type="button" class="btn small ghost" data-act="unhide" data-id="${esc(h.id)}">Wieder einblenden</button></li>`).join('')}</ul>` : ''}
     </section>
     <section class="panel set">
       <h2>Schnellzugriff</h2>
@@ -754,7 +840,7 @@ views.einstellungen = () => {
     </section>
     <section class="panel set">
       <h2>Sicherung</h2>
-      <p>Deine To-dos, Noten, Prüfungen und Lernzettel liegen nur in diesem Browser auf diesem Gerät, nicht auf GitHub. Sichere sie regelmäßig als Datei. Mit derselben Datei überträgst du alles auf ein anderes Gerät.</p>
+      <p>${sync.token ? 'Deine Daten werden zwischen deinen Geräten abgeglichen. Eine Sicherung als Datei schadet trotzdem nicht, z. B. vor Prüfungsphasen.' : 'Ohne Geräte-Abgleich liegen deine To-dos, Noten, Prüfungen und Lernzettel nur in diesem Browser. Sichere sie regelmäßig als Datei.'}</p>
       <p class="muted">${state.lastBackup ? `Letzte Sicherung am ${fmt(new Date(state.lastBackup), { day: 'numeric', month: 'long', year: 'numeric' })}.` : 'Noch keine Sicherung erstellt.'}</p>
       <p class="row-actions"><button type="button" class="btn primary" data-act="backup">Sicherung herunterladen</button><label class="btn" for="restoreFile">Sicherung einspielen</label><input class="sr" id="restoreFile" type="file" accept="application/json,.json" data-chg="restore"></p>
       <p><button type="button" class="btn ghost danger" data-act="reset">Alle Daten in diesem Browser löschen</button></p>
@@ -793,6 +879,12 @@ function exportReminders() {
     if (m) out.push(`DESCRIPTION:${E(m.name)}`);
     out.push(...alarm('-PT6H', `Morgen fällig: ${t.text}`), ...alarm('PT8H', `Heute fällig: ${t.text}`), 'END:VEVENT'); n++;
   }
+  for (const c of state.checks) {
+    if (!c.due || c.done || daysUntil(c.due) < 0) continue;
+    const L = window.CHECKLISTS[c.list], st = parseYmd(c.due), title = `${L ? L.title + ': ' : ''}${c.text}`;
+    out.push('BEGIN:VEVENT', `UID:check-${c.id}@ibw-studium`, `DTSTAMP:${stamp}`, `SUMMARY:${E(title)}`, `DTSTART;VALUE=DATE:${D(st)}`, `DTEND;VALUE=DATE:${D(addDays(st, 1))}`, 'TRANSP:TRANSPARENT',
+      ...alarm('-P6DT15H', `In einer Woche: ${title}`), ...alarm('-PT6H', `Morgen: ${title}`), 'END:VEVENT'); n++;
+  }
   if (!n) return toast('Es gibt noch keine Prüfung und kein To-do mit Datum in der Zukunft.');
   out.push('END:VCALENDAR');
   const a = document.createElement('a');
@@ -825,12 +917,431 @@ function studyCards(note) {
   if (!dlg.open) dlg.showModal();
 }
 
+/* ───────── Hochschultermine und Lernzeit auf der Startseite ───────── */
+const hmin = m => { m = Math.round(m); return m >= 60 ? `${Math.floor(m / 60)} Std${m % 60 ? ` ${m % 60} Min` : ''}` : `${m} Min`; };
+
+function termsPanel() {
+  const t0 = today();
+  const list = termItems().filter(t => t.end >= t0 && (t.start - t0) / 864e5 <= 60).slice(0, 4);
+  if (!list.length) return '';
+  return `<section class="panel"><div class="panel-head"><h2>An der Hochschule</h2><a href="${esc(window.TERMS_SOURCE)}" target="_blank" rel="noopener">Terminplan</a></div>
+    <ul class="exam-mini terms">${list.map(t => {
+      const running = t.start <= t0, left = Math.round((t.end - t0) / 864e5);
+      const cd = running ? (left === 0 ? 'endet heute' : left === 1 ? 'endet morgen' : `noch ${left} Tage`) : countdown(ymd(t.start));
+      const when = running && +t.start !== +t.end ? `bis ${fmt(t.end, { weekday: 'short', day: 'numeric', month: 'short' })}` : rangeText(t.start, t.end);
+      return `<li class="${t.imp ? 'imp' : ''}"><div><span class="cd">${cd}</span><b>${esc(t.title)}</b><span>${when}</span></div></li>`;
+    }).join('')}</ul></section>`;
+}
+
+function studyPanel() {
+  const mo = ymd(monday(new Date()));
+  const week = state.study.filter(s => s.date >= mo), total = week.reduce((a, s) => a + s.min, 0);
+  const per = {};
+  week.forEach(s => { per[s.module] = (per[s.module] || 0) + s.min; });
+  const top = Object.entries(per).sort((a, b) => b[1] - a[1]).slice(0, 4), max = top.length ? top[0][1] : 1;
+  const t = state.timer;
+  return `<section class="panel"><div class="panel-head"><h2>Lernzeit</h2><span>diese Woche</span></div>
+    <p class="big-num">${total ? hmin(total) : 'Noch nichts gelernt'}</p>
+    ${top.length ? `<ul class="study-bars">${top.map(([id, min]) => { const m = modOf(id); return `<li style="--h:${m ? m.hue : 215}"><span>${esc(m ? m.name : 'Allgemein')}</span><span class="sb"><i style="width:${min / max * 100}%"></i></span><span>${hmin(min)}</span></li>`; }).join('')}</ul>` : `<p class="muted">Der Lern-Timer zählt mit, wie lange du pro Fach lernst.</p>`}
+    <p class="row-actions">${t ? `<span class="muted">Der Timer läuft gerade.</span>` : `<button type="button" class="btn primary" data-act="timer-new">Lern-Timer starten</button>`}<button type="button" class="btn ghost" data-act="study-add">Lernzeit nachtragen</button></p>
+  </section>`;
+}
+
+/* ───────── Notenrechner ───────── */
+function goalText() {
+  const goal = gradeNum(state.settings.goal);
+  if (!state.settings.goal) return 'Gib einen Wunschschnitt ein. Dann siehst du, welchen Schnitt du in den restlichen Modulen dafür brauchst.';
+  if (goal === null || goal < 1 || goal > 4) return 'Bitte einen Schnitt zwischen 1,0 und 4,0 eingeben.';
+  let w = 0, wcp = 0, rest = 0;
+  for (const m of allModules()) {
+    if (m.nograde) continue;
+    const g = gradeNum(m.grade);
+    if (g !== null && g >= 1 && g <= 4) { w += g * m.cp; wcp += m.cp; } else if (m.status !== 'bestanden') rest += m.cp;
+  }
+  const f = n => n.toFixed(1).replace('.', ',');
+  if (!rest) return wcp ? `Alle benoteten Module sind eingetragen. Dein Schnitt: ${f(w / wcp)}.` : 'Es gibt keine benoteten Module.';
+  const need = (goal * (wcp + rest) - w) / rest;
+  if (!wcp) return `Für ${f(goal)} brauchst du in allen ${rest} CP im Schnitt ${f(goal)}. Sobald du Noten einträgst, rechnet das genauer.`;
+  if (need < 1) return `Eine ${f(goal)} ist rechnerisch nicht mehr erreichbar. Mit lauter 1,0 käme noch eine ${f((w + rest) / (wcp + rest))} heraus.`;
+  if (need >= 4) return `Eine ${f(goal)} ist dir sicher, selbst mit lauter 4,0 in den restlichen ${rest} CP.`;
+  return `Für ${f(goal)} brauchst du in den restlichen ${rest} CP im Schnitt mindestens eine ${f(Math.floor(need * 10) / 10)}.`;
+}
+
+/* ───────── Lernplan vor Klausuren ───────── */
+function planForm(x) {
+  const m = modOf(x.module), exam = parseYmd(x.date), name = m ? m.name : 'Prüfung';
+  const existing = state.todos.filter(t => t.plan === x.id && !t.done);
+  const def = addDays(exam, -21) > today() ? addDays(exam, -21) : today();
+  openForm({
+    title: `Lernplan für ${name}`, submit: existing.length ? 'Lernplan neu erstellen' : 'Lernplan erstellen',
+    fields: [
+      { name: 'start', label: 'Anfangen am', type: 'date', value: ymd(def), half: true, required: true },
+      { name: 'per', label: 'Lerneinheiten pro Woche', type: 'select', value: '3', options: [2, 3, 4, 5, 6, 7].map(n => [String(n), String(n)]), half: true },
+      { name: 'topics', label: 'Themen oder Kapitel, eins pro Zeile (freiwillig)', type: 'textarea', value: '', placeholder: 'Kapitel 1: Grundlagen\nKapitel 2: Funktionen\nKapitel 3: Matrizen' }
+    ],
+    extra: `<p class="muted">Die Website verteilt die Lerneinheiten gleichmäßig bis zum Tag vor der Prüfung und legt sie als To-dos an. Die vorletzte Einheit ist Wiederholung, die letzte eine Altklausur unter Zeitdruck.${existing.length ? ' Noch offene Einheiten des alten Plans werden ersetzt, erledigte bleiben.' : ''}</p>`,
+    onSave: d => {
+      const start = parseYmd(d.start), last = addDays(exam, -1), days = Math.round((last - start) / 864e5);
+      if (!d.start || days < 1) { toast('Der Start muss mindestens zwei Tage vor der Prüfung liegen.'); return; }
+      const n = Math.max(2, Math.min(60, Math.round((days + 1) / 7 * +d.per)));
+      const c = n - (n >= 4 ? 2 : 1), topics = d.topics.split('\n').map(t => t.trim()).filter(Boolean);
+      const sess = Array.from({ length: c }, () => []);
+      if (topics.length > c) topics.forEach((tp, i) => sess[Math.floor(i * c / topics.length)].push(tp));
+      else if (topics.length) for (let k = 0; k < c; k++) sess[k].push(topics[Math.floor(k * topics.length / c)]);
+      state.todos = state.todos.filter(t => !(t.plan === x.id && !t.done));
+      for (let k = 0; k < n; k++) {
+        const day = k === n - 1 ? last : addDays(start, Math.round(k * days / (n - 1)));
+        let text;
+        if (k === n - 1) text = `${name}: Altklausur unter Zeitdruck`;
+        else if (k === n - 2 && n >= 4) text = `${name}: Alles wiederholen, Lücken schließen`;
+        else text = sess[k].length ? `${name}: ${sess[k].join(', ')}` : `${name}: Lerneinheit ${k + 1}`;
+        state.todos.push({ id: uid(), text, module: x.module, due: ymd(day), prio: k >= n - 2 ? 'hoch' : 'normal', done: false, created: Date.now() + k, plan: x.id });
+      }
+      save(); toast(`${n} Lerneinheiten als To-dos angelegt`);
+    },
+    onDelete: existing.length ? () => { state.todos = state.todos.filter(t => !(t.plan === x.id && !t.done)); save(); toast('Offene Lerneinheiten gelöscht'); } : null
+  });
+}
+
+/* ───────── Lern-Timer ───────── */
+const timerEl = $('#timer');
+let timerShape = '';
+const timerLeft = t => t.paused != null ? t.paused : t.end - Date.now();
+const mmss = ms => { const s = Math.max(0, Math.ceil(ms / 1000)); return `${pad(Math.floor(s / 60))}:${pad(s % 60)}`; };
+const logStudy = (module, min, date = ymd(new Date())) => { if (min >= 1) state.study.push({ id: uid(), module: module || '', date, min: Math.round(min) }); };
+
+function beep() {
+  try {
+    const C = window.AudioContext || window.webkitAudioContext, c = new C();
+    [0, 0.28].forEach(d => {
+      const o = c.createOscillator(), g = c.createGain();
+      o.frequency.value = 880; g.gain.setValueAtTime(0.0001, c.currentTime + d);
+      g.gain.exponentialRampToValueAtTime(0.25, c.currentTime + d + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + d + 0.22);
+      o.connect(g); g.connect(c.destination); o.start(c.currentTime + d); o.stop(c.currentTime + d + 0.25);
+    });
+    setTimeout(() => c.close(), 900);
+  } catch (e) { /* kein Ton möglich */ }
+}
+function notify(title, body) {
+  try { if (navigator.vibrate) navigator.vibrate([200, 100, 200]); } catch (e) { /* egal */ }
+  beep();
+  if (!('Notification' in window) || Notification.permission !== 'granted') { toast(`${title} ${body}`); return; }
+  const opts = { body, icon: 'assets/icon-192.png', badge: 'assets/icon-192.png', tag: 'ibw-timer', renotify: true };
+  if (navigator.serviceWorker && navigator.serviceWorker.controller) navigator.serviceWorker.ready.then(r => r.showNotification(title, opts)).catch(() => toast(`${title} ${body}`));
+  else { try { new Notification(title, opts); } catch (e) { toast(`${title} ${body}`); } }
+}
+
+function drawTimer(force) {
+  const t = state.timer;
+  if (!t) {
+    if (!timerEl.hidden) { timerEl.hidden = true; timerEl.innerHTML = ''; timerShape = ''; document.title = baseTitle; document.body.classList.remove('has-timer'); }
+    return;
+  }
+  const m = modOf(t.module), left = timerLeft(t);
+  const label = t.phase === 'focus' ? 'Fokus' : t.phase === 'break' ? 'Pause' : 'Pause vorbei';
+  const shape = `${t.phase}|${t.paused != null}|${t.module}`;
+  if (force || shape !== timerShape || timerEl.hidden) {
+    timerShape = shape; timerEl.hidden = false; document.body.classList.add('has-timer');
+    timerEl.className = `timer ph-${t.phase}`;
+    timerEl.style.setProperty('--h', m ? m.hue : 215);
+    timerEl.innerHTML = `<span class="t-label">${label}${t.paused != null ? ', angehalten' : ''}</span>
+      <b class="t-time">${t.phase === 'done' ? '00:00' : mmss(left)}</b><span class="t-mod">${esc(m ? m.name : 'Allgemein')}</span>
+      <span class="t-btns">${t.phase === 'done'
+        ? `<button type="button" class="btn small primary" data-act="timer-next">Nächste Runde</button><button type="button" class="btn small" data-act="timer-stop">Beenden</button>`
+        : `<button type="button" class="btn small" data-act="timer-pause">${t.paused != null ? 'Weiter' : 'Anhalten'}</button><button type="button" class="btn small" data-act="timer-stop">Beenden</button>`}</span>`;
+  } else {
+    const el = $('.t-time', timerEl); if (el) el.textContent = t.phase === 'done' ? '00:00' : mmss(left);
+  }
+  document.title = t.phase === 'done' ? `Pause vorbei – IBW Studium` : `${mmss(left)} ${label} – IBW Studium`;
+}
+function tick() {
+  const t = state.timer;
+  if (t && t.phase !== 'done' && t.paused == null && Date.now() >= t.end) {
+    const m = modOf(t.module), name = m ? m.name : 'Lernen';
+    if (t.phase === 'focus') {
+      logStudy(t.module, t.focus); t.rounds = (t.rounds || 0) + 1;
+      t.phase = 'break'; t.end = Date.now() + t.brk * 6e4;
+      notify('Zeit für eine Pause', `${t.focus} Minuten ${name} geschafft. Jetzt ${t.brk} Minuten Pause.`);
+    } else {
+      t.phase = 'done';
+      notify('Pause vorbei', `Bereit für die nächste Runde ${name}?`);
+    }
+    save();
+    if (route()[0] === 'heute' && !dlg.open) render();
+  }
+  drawTimer();
+}
+function timerForm() {
+  const cur = semMods(state.settings.sem)[0];
+  openForm({
+    title: 'Lern-Timer starten', submit: 'Starten',
+    fields: [
+      { name: 'module', label: 'Fach', type: 'select', html: modOptions(state.lastStudyModule || (cur && cur.id), true) },
+      { name: 'focus', label: 'Lernen', type: 'select', value: String(state.lastFocus || 25), options: [15, 25, 30, 45, 50, 60, 90].map(n => [String(n), `${n} Minuten`]), half: true },
+      { name: 'brk', label: 'Pause danach', type: 'select', value: String(state.lastBrk || 5), options: [5, 10, 15, 20].map(n => [String(n), `${n} Minuten`]), half: true }
+    ],
+    extra: `<p class="muted">Der Timer läuft weiter, wenn du die Seite wechselst. Erlaubst du Mitteilungen, meldet er sich auch, wenn die Website im Hintergrund ist.</p>`,
+    onSave: d => {
+      if ('Notification' in window && Notification.permission === 'default') { try { Notification.requestPermission(); } catch (e) { /* egal */ } }
+      state.lastStudyModule = d.module; state.lastFocus = +d.focus; state.lastBrk = +d.brk;
+      state.timer = { module: d.module, phase: 'focus', focus: +d.focus, brk: +d.brk, end: Date.now() + d.focus * 6e4, paused: null, rounds: 0 };
+      save();
+    }
+  });
+}
+
+/* ───────── Planung: Praxissemester, Ausland, Thesis ───────── */
+const APP_STATUS = [['idee', 'Interessant'], ['beworben', 'Beworben'], ['gespraech', 'Im Gespräch'], ['zusage', 'Zusage'], ['absage', 'Absage']];
+function ensureChecks() {
+  let added = false;
+  for (const [key, L] of Object.entries(window.CHECKLISTS)) {
+    if (state.checks.some(c => c.list === key) || Object.keys(state.deleted).some(k => k.startsWith(`checks:tpl-${key}-`))) continue;
+    L.items.forEach((text, i) => state.checks.push({ id: `tpl-${key}-${i}`, list: key, text, done: false, due: '' }));
+    added = true;
+  }
+  if (added) save();
+}
+function checkForm(c) {
+  openForm({
+    title: 'Schritt bearbeiten',
+    fields: [{ name: 'text', label: 'Was ist zu tun?', value: c.text, required: true }, { name: 'due', label: 'Bis wann?', type: 'date', value: c.due }],
+    extra: `<p class="muted">Mit Datum erscheint der Schritt im Kalender und lässt sich als Erinnerung aufs Handy übertragen.</p>`,
+    onSave: d => { if (d.text.trim()) { c.text = d.text.trim(); c.due = d.due; save(); } },
+    onDelete: () => { state.checks = state.checks.filter(x => x !== c); save(); }
+  });
+}
+function appForm(a) {
+  const kind = a.kind, praxis = kind === 'praxis';
+  openForm({
+    title: a.id ? (praxis ? 'Bewerbung bearbeiten' : 'Hochschule bearbeiten') : (praxis ? 'Neue Bewerbung' : 'Partnerhochschule hinzufügen'),
+    fields: [
+      { name: 'name', label: praxis ? 'Unternehmen' : 'Hochschule', value: a.name, required: true },
+      { name: 'role', label: praxis ? 'Stelle oder Abteilung' : 'Land und Stadt', value: a.role, half: true },
+      { name: 'status', label: 'Stand', type: 'select', value: a.status || 'idee', options: APP_STATUS, half: true },
+      { name: 'date', label: praxis ? 'Datum (Bewerbung oder Frist)' : 'Bewerbungsfrist', type: 'date', value: a.date, half: true },
+      { name: 'contact', label: 'Ansprechpartner:in', value: a.contact, half: true },
+      { name: 'url', label: 'Link', type: 'url', value: a.url, placeholder: 'https://…' },
+      { name: 'notes', label: 'Notizen', type: 'textarea', value: a.notes }
+    ],
+    onSave: d => {
+      if (!d.name.trim()) return;
+      if (d.url && !/^https?:\/\//i.test(d.url)) d.url = 'https://' + d.url;
+      if (a.id) Object.assign(a, d); else state.apps.push({ id: uid(), kind, ...d });
+      save();
+    },
+    onDelete: a.id ? () => { state.apps = state.apps.filter(x => x !== a); save(); } : null
+  });
+}
+function checkRow(c) {
+  const due = c.due ? dueLabel(c.due) : null;
+  return `<li class="todo${c.done ? ' done' : ''}">
+    <button type="button" class="tick" role="checkbox" aria-checked="${!!c.done}" aria-label="${esc(c.text)} erledigt" data-act="check-toggle" data-id="${c.id}"></button>
+    <button type="button" class="todo-body" data-act="check-edit" data-id="${c.id}"><span class="todo-text">${esc(c.text)}</span>
+    <span class="todo-meta">${due && !c.done ? `<span class="due ${due[1]}">${due[0]}</span>` : c.done ? '' : '<span>Datum hinzufügen</span>'}</span></button></li>`;
+}
+views.planung = () => {
+  ensureChecks();
+  const sem = state.settings.sem;
+  const section = key => {
+    const L = window.CHECKLISTS[key], items = state.checks.filter(c => c.list === key);
+    const done = items.filter(c => c.done).length, apps = state.apps.filter(a => a.kind === key);
+    const open = key === 'thesis' ? sem >= 6 : key === 'praxis' ? sem >= 3 && sem <= 5 : sem >= 3 && sem <= 7;
+    const appsBlock = key === 'thesis' ? '' : `<div class="apps-head"><h3>${key === 'praxis' ? 'Bewerbungen' : 'Partnerhochschulen'}</h3><button type="button" class="btn small" data-act="app-new" data-kind="${key}">${key === 'praxis' ? 'Bewerbung eintragen' : 'Hochschule hinzufügen'}</button></div>
+      ${apps.length ? `<ul class="apps">${apps.slice().sort((a, b) => APP_STATUS.findIndex(s => s[0] === b.status) - APP_STATUS.findIndex(s => s[0] === a.status) || (a.date || '').localeCompare(b.date || '')).map(a => `<li><button type="button" data-act="app-edit" data-id="${a.id}">
+        <span class="app-main"><b>${esc(a.name)}</b><span>${esc(a.role || '')}</span></span>
+        <span class="st st-${a.status || 'idee'}">${(APP_STATUS.find(s => s[0] === a.status) || APP_STATUS[0])[1]}</span>
+        <span class="app-date">${a.date ? fmt(parseYmd(a.date), { day: 'numeric', month: 'short', year: 'numeric' }) : ''}</span></button></li>`).join('')}</ul>`
+      : `<p class="muted">${key === 'praxis' ? 'Noch keine Bewerbung. Trag auch Firmen ein, die dich nur interessieren.' : 'Noch keine Hochschule notiert.'}</p>`}`;
+    const isOpen = ui.planOpen && key in ui.planOpen ? ui.planOpen[key] : open;
+    return `<details class="plan-sec" data-key="${key}"${isOpen ? ' open' : ''}>
+      <summary><span class="ps-title">${L.title}</span><span class="ps-meta">${L.when}, ${done} von ${items.length} Schritten erledigt${sem < L.from ? `, wichtig ab dem ${L.from}. Semester` : ''}</span><span class="ps-intro">${L.intro}</span></summary>
+      <div class="ps-body">${appsBlock}
+        <h3>Schritte</h3><ul class="todos">${items.map(checkRow).join('')}</ul>
+        <form class="quick" data-sub="check-add"><input type="hidden" name="list" value="${key}"><input name="text" aria-label="Eigener Schritt" placeholder="Eigenen Schritt hinzufügen" autocomplete="off"><button class="btn">Hinzufügen</button></form>
+      </div></details>`;
+  };
+  return `<header class="page-head"><h1>Planung</h1><p>Alles, was über einzelne Module hinausgeht. Die Schritte sind allgemeine Vorschläge, verbindlich sind die Vorgaben deiner Hochschule.</p></header>
+    ${section('praxis')}${section('ausland')}${section('thesis')}`;
+};
+
+/* ───────── Abgleich zwischen Geräten (privater GitHub-Gist) ───────── */
+const SYNC_KEY = 'ibw-studium-sync', GIST_FILE = 'ibw-studium-daten.json';
+const COLS = ['todos', 'exams', 'notes', 'events', 'custom', 'links', 'study', 'apps', 'checks', 'hidden'];
+let sync = {};
+try { sync = JSON.parse(localStorage.getItem(SYNC_KEY)) || {}; } catch (e) { sync = {}; }
+const syncState = { busy: false, again: false, error: '', pushTimer: null };
+function saveSync() { try { localStorage.setItem(SYNC_KEY, JSON.stringify(sync)); } catch (e) { /* egal */ } }
+
+let stampCache = null;
+function collect() {
+  const seen = new Map(), strip = o => { const { u, ...r } = o; return JSON.stringify(r); };
+  for (const c of COLS) for (const it of state[c] || []) if (it && it.id) seen.set(`${c}:${it.id}`, [strip(it), it]);
+  for (const [id, m] of Object.entries(state.mods)) seen.set(`mods:${id}`, [strip(m), m]);
+  seen.set('settings', [strip(state.settings), state.settings]);
+  return seen;
+}
+/* Merkt sich, welche Einträge sich seit dem letzten Speichern geändert haben (u = Zeitpunkt) */
+function stamp(silent) {
+  const now = Date.now(), seen = collect();
+  if (stampCache && !silent) {
+    for (const [k, [j, ref]] of seen) if (stampCache.get(k) !== j) ref.u = now;
+    for (const k of stampCache.keys()) if (!seen.has(k)) state.deleted[k] = now;
+  }
+  stampCache = new Map([...seen].map(([k, [j]]) => [k, j]));
+}
+function content() {
+  return JSON.stringify({ v: 1, ...Object.fromEntries(COLS.map(c => [c, state[c]])), mods: state.mods, settings: state.settings, deleted: state.deleted });
+}
+/* Führt die Daten aus dem Gist mit den lokalen zusammen: pro Eintrag gewinnt die neuere Änderung */
+function mergeRemote(r) {
+  const del = { ...(r.deleted || {}) };
+  for (const [k, t] of Object.entries(state.deleted)) del[k] = Math.max(del[k] || 0, t);
+  const newer = (a, b) => (!a ? b : !b ? a : (b.u || 0) > (a.u || 0) ? b : a);
+  const alive = (k, it) => !del[k] || (it.u || 0) > del[k];
+  for (const c of COLS) {
+    const map = new Map();
+    for (const it of r[c] || []) if (it && it.id) map.set(it.id, it);
+    for (const it of state[c] || []) if (it && it.id) map.set(it.id, newer(map.get(it.id), it));
+    state[c] = [...map.values()].filter(it => alive(`${c}:${it.id}`, it));
+  }
+  const mods = { ...(r.mods || {}) };
+  for (const [id, m] of Object.entries(state.mods)) mods[id] = newer(mods[id], m);
+  for (const id of Object.keys(mods)) if (!alive(`mods:${id}`, mods[id])) delete mods[id];
+  state.mods = mods;
+  if (r.settings) state.settings = { ...defaults().settings, ...newer(r.settings, state.settings) };
+  const cut = Date.now() - 180 * 864e5;
+  state.deleted = Object.fromEntries(Object.entries(del).filter(([, t]) => t > cut));
+}
+async function gh(path, opts = {}) {
+  const r = await fetch('https://api.github.com' + path, {
+    method: opts.method || 'GET', cache: 'no-store',
+    headers: { Authorization: `Bearer ${opts.token || sync.token}`, Accept: 'application/vnd.github+json', ...(opts.body ? { 'Content-Type': 'application/json' } : {}) },
+    body: opts.body ? JSON.stringify(opts.body) : undefined
+  });
+  if (!r.ok) { const e = new Error(r.status === 401 || r.status === 403 ? 'auth' : r.status === 404 ? 'notfound' : 'HTTP ' + r.status); e.status = r.status; throw e; }
+  return r.json();
+}
+async function findGist(token) {
+  for (let page = 1; page <= 10; page++) {
+    const list = await gh(`/gists?per_page=100&page=${page}`, { token });
+    const hit = list.find(g => g.files && g.files[GIST_FILE]);
+    if (hit) return hit.id;
+    if (list.length < 100) break;
+  }
+  const g = await gh('/gists', { token, method: 'POST', body: { description: 'IBW Studium: Daten der Website (bitte nicht löschen)', public: false, files: { [GIST_FILE]: { content: content() } } } });
+  return g.id;
+}
+async function readGist() {
+  const g = await gh('/gists/' + sync.gist);
+  const f = g.files && g.files[GIST_FILE];
+  if (!f) return { raw: '', data: {} };
+  let raw = f.content || '';
+  if (f.truncated && f.raw_url) raw = await (await fetch(f.raw_url, { cache: 'no-store' })).text();
+  try { return { raw, data: JSON.parse(raw) }; } catch (e) { return { raw, data: {} }; }
+}
+function syncLabel() {
+  if (!sync.token) return 'Nur auf diesem Gerät gespeichert';
+  if (syncState.busy) return 'Gleiche ab …';
+  if (syncState.error) return 'Abgleich gestört';
+  if (!sync.at) return 'Verbunden';
+  const d = new Date(sync.at);
+  return `Abgeglichen ${ymd(d) === ymd(new Date()) ? 'um ' + hm(d) : 'am ' + fmt(d, { day: 'numeric', month: 'short' })}`;
+}
+function renderSyncBits() {
+  document.querySelectorAll('[data-sync-status]').forEach(el => { el.textContent = syncLabel(); });
+  const e = $('#syncErr'); if (e) e.textContent = syncState.error;
+}
+function schedulePush() {
+  if (!sync.token) return;
+  clearTimeout(syncState.pushTimer);
+  syncState.pushTimer = setTimeout(syncNow, 2500);
+}
+async function syncNow(manual, retried) {
+  if (!sync.token || !sync.gist) return;
+  if (syncState.busy) { syncState.again = true; return; }
+  if (navigator.onLine === false) { syncState.error = 'Du bist offline. Der Abgleich läuft automatisch, sobald du wieder Internet hast.'; renderSyncBits(); return; }
+  syncState.busy = true; renderSyncBits();
+  try {
+    clearTimeout(saveTimer); stamp(); persist();
+    const before = content();
+    const { raw, data } = await readGist();
+    mergeRemote(data); fixState();
+    stamp(true); persist();
+    const after = content();
+    if (after !== raw) await gh('/gists/' + sync.gist, { method: 'PATCH', body: { files: { [GIST_FILE]: { content: after } } } });
+    sync.at = Date.now(); saveSync(); syncState.error = '';
+    if (after !== before) {
+      matchCache.clear(); applyTheme();
+      const a = document.activeElement;
+      if (!(a && main.contains(a) && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)) && !dlg.open) render();
+    }
+    if (manual) toast('Abgeglichen');
+  } catch (e) {
+    if (e.status === 404 && !retried) {
+      try { sync.gist = await findGist(sync.token); saveSync(); syncState.busy = false; return syncNow(manual, true); } catch (x) { e = x; }
+    }
+    syncState.error = e.message === 'auth'
+      ? 'GitHub hat den Schlüssel abgelehnt. Er ist vermutlich abgelaufen oder wurde gelöscht. Trenne die Verbindung und verbinde das Gerät mit einem neuen Schlüssel.'
+      : 'Der letzte Abgleich hat nicht geklappt. Die Website versucht es in ein paar Minuten erneut.';
+    if (manual) toast(syncState.error);
+  } finally {
+    syncState.busy = false; renderSyncBits();
+    if (syncState.again) { syncState.again = false; setTimeout(syncNow, 300); }
+  }
+}
+async function connectSync(token) {
+  token = String(token || '').trim();
+  if (token.length < 20 || /\s/.test(token)) return toast('Das sieht nicht wie ein GitHub-Schlüssel aus. Er beginnt meist mit ghp_.');
+  toast('Verbinde mit GitHub …');
+  try {
+    const gist = await findGist(token);
+    sync = { token, gist, at: null }; saveSync(); syncState.error = '';
+    await syncNow();
+    render(); toast('Verbunden. Deine Daten werden ab jetzt abgeglichen.');
+  } catch (e) {
+    toast(e.message === 'auth' ? 'GitHub hat den Schlüssel abgelehnt. Ist beim Erstellen das Häkchen bei „gist“ gesetzt?' : 'Verbinden hat nicht geklappt. Bist du online?');
+  }
+}
+const pairLink = () => `${location.origin}${location.pathname}#/verbinden/${encodeURIComponent(sync.token)}`;
+function loadQR() {
+  if (window.qrcode) return Promise.resolve();
+  return new Promise((ok, no) => { const s = document.createElement('script'); s.src = 'assets/qrcode.js'; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+}
+async function pairDialog() {
+  let svg = '';
+  try { await loadQR(); const q = window.qrcode(0, 'M'); q.addData(pairLink()); q.make(); svg = q.createSvgTag({ cellSize: 5, margin: 3, scalable: true }); } catch (e) { svg = ''; }
+  openInfo(`<h2>Weiteres Gerät verbinden</h2>
+    <p>Scanne den Code mit der Kamera deines Handys. Die Website öffnet sich und verbindet sich von selbst.</p>
+    ${svg ? `<div class="qr">${svg}</div>` : ''}
+    <p class="muted">Oder kopiere den Link und öffne ihn auf dem anderen Gerät. Er enthält deinen Schlüssel, gib ihn also nicht weiter.</p>
+    <p class="row-actions"><button type="button" class="btn" data-act="copy-pair">Link kopieren</button></p>`);
+}
+function syncPanel() {
+  if (!sync.token) return `<section class="panel set">
+    <h2>Handy und Laptop abgleichen</h2>
+    <p>Damit alle deine Geräte dieselben To-dos, Noten und Lernzettel zeigen, legt die Website eine Kopie deiner Daten in einem privaten Bereich deines GitHub-Kontos ab (einem „Gist“). Dafür braucht sie einmalig einen Schlüssel.</p>
+    <ol class="steps">
+      <li><a href="https://github.com/settings/tokens/new?scopes=gist&description=IBW%20Studium" target="_blank" rel="noopener">Schlüssel bei GitHub erstellen</a>. Das Häkchen bei „gist“ ist schon gesetzt, mehr braucht es nicht.</li>
+      <li>Bei „Expiration“ am besten „No expiration“ wählen und unten auf „Generate token“ klicken.</li>
+      <li>Den Schlüssel kopieren (beginnt mit ghp_) und hier einfügen.</li>
+    </ol>
+    <form class="quick" data-sub="sync-connect"><input name="token" type="password" autocomplete="off" aria-label="GitHub-Schlüssel" placeholder="ghp_…" required><button class="btn primary">Verbinden</button></form>
+    <p class="muted">Das musst du nur auf einem Gerät machen. Danach zeigt dir die Website einen QR-Code, mit dem du dein Handy in Sekunden verbindest.</p>
+  </section>`;
+  return `<section class="panel set">
+    <h2>Handy und Laptop abgleichen</h2>
+    <p><strong data-sync-status>${esc(syncLabel())}</strong>. Änderungen werden automatisch übertragen, sobald du online bist.</p>
+    <p class="err" id="syncErr" role="alert">${esc(syncState.error)}</p>
+    <p class="row-actions"><button type="button" class="btn primary" data-act="pair">Weiteres Gerät verbinden</button><button type="button" class="btn" data-act="sync-now">Jetzt abgleichen</button><button type="button" class="btn ghost danger" data-act="sync-off">Trennen</button></p>
+  </section>`;
+}
+
 /* ───────── Aktionen ───────── */
 const byId = (list, id) => list.find(x => x.id === id);
 const act = {
   sem(el) { state.settings.sem = +el.dataset.sem; save(); matchCache.clear(); const r = route(); if (r[0] === 'lernzettel' && r[1]) go('lernzettel'); else render(); },
   more() {
-    openInfo(`<h2>Mehr</h2><p class="more-list">${['klausuren', 'module', 'einstellungen'].map(id => `<a class="btn" href="#/${id}" data-close>${icon(id)} ${NAV.find(n => n[0] === id)[1]}</a>`).join('')}</p>`);
+    openInfo(`<h2>Mehr</h2><p class="more-list">${['klausuren', 'module', 'planung', 'einstellungen'].map(id => `<a class="btn" href="#/${id}" data-close>${icon(id)} ${NAV.find(n => n[0] === id)[1]}</a>`).join('')}</p>`);
   },
   ev(el) { const e = evIndex.get(el.dataset.id); if (e) eventInfo(e); },
   'event-new'() { eventForm(); },
@@ -873,6 +1384,61 @@ const act = {
   },
   cards(el) { const n = byId(state.notes, el.dataset.id); if (n) studyCards(n); },
   print() { window.print(); },
+  'hide-lec'(el) {
+    const e = evIndex.get(el.dataset.id); if (!e) return;
+    const room = roomOf(e.location), series = el.dataset.mode === 'series';
+    const id = series ? e.keys.series : e.keys.one;
+    if (!state.hidden.some(h => h.id === id)) state.hidden.push({ id, label: series ? `${e.title}, jeden ${WD[e.start.getDay()]} um ${hm(e.start)}${room ? `, Raum ${room}` : ''}` : `${e.title}, ${fmt(e.start, { day: 'numeric', month: 'short' })} um ${hm(e.start)}${room ? `, Raum ${room}` : ''}` });
+    save(); dlg.close(); render(); toast('Ausgeblendet. Unter Einstellungen kannst du das rückgängig machen.');
+  },
+  unhide(el) { state.hidden = state.hidden.filter(h => h.id !== el.dataset.id); save(); render(); },
+  'par-ok'(el) { try { state.settings.parOk = [...new Set([...state.settings.parOk, ...JSON.parse(el.dataset.t)])]; } catch (e) { /* egal */ } save(); render(); },
+  'lec-note'(el) {
+    const e = evIndex.get(el.dataset.id); if (!e || !e.mod) return;
+    let n = state.notes.find(x => x.lec === e.keys.one);
+    if (!n) {
+      const day = fmt(e.start, { weekday: 'long', day: 'numeric', month: 'long' });
+      n = { id: uid(), module: e.mod.id, lec: e.keys.one, title: `Vorlesung vom ${fmt(e.start, { day: 'numeric', month: 'long' })}`, body: `# ${e.title}, ${day}\n\n## Inhalte\n- \n\n## Wichtig für die Klausur\n- \n\n## Offene Fragen\n- `, updated: Date.now() };
+      state.notes.push(n); save();
+    }
+    dlg.close(); ui.noteMode = null; go(`lernzettel/${n.module}/${n.id}`);
+  },
+  'plan-new'(el) { const x = byId(state.exams, el.dataset.id); if (x) planForm(x); },
+  'timer-new'() { timerForm(); },
+  'timer-pause'() { const t = state.timer; if (!t) return; if (t.paused != null) { t.end = Date.now() + t.paused; t.paused = null; } else t.paused = timerLeft(t); save(); drawTimer(true); },
+  'timer-next'() { const t = state.timer; if (!t) return; Object.assign(t, { phase: 'focus', end: Date.now() + t.focus * 6e4, paused: null }); save(); drawTimer(true); },
+  'timer-stop'() {
+    const t = state.timer; if (!t) return;
+    if (t.phase === 'focus') logStudy(t.module, (t.focus * 6e4 - timerLeft(t)) / 6e4);
+    state.timer = null; save(); drawTimer(true); render();
+  },
+  'study-add'() {
+    openForm({
+      title: 'Lernzeit nachtragen',
+      fields: [
+        { name: 'module', label: 'Fach', type: 'select', html: modOptions(state.lastStudyModule, true) },
+        { name: 'min', label: 'Minuten', type: 'number', value: 60, half: true, attrs: ' min="1" max="900" step="5"' },
+        { name: 'date', label: 'Datum', type: 'date', value: ymd(new Date()), half: true }
+      ],
+      onSave: d => { logStudy(d.module, +d.min, d.date || ymd(new Date())); save(); }
+    });
+  },
+  'check-toggle'(el) { const c = byId(state.checks, el.dataset.id); if (c) { c.done = !c.done; save(); render(); } },
+  'check-edit'(el) { const c = byId(state.checks, el.dataset.id); if (c) checkForm(c); },
+  'app-new'(el) { appForm({ kind: el.dataset.kind }); },
+  'app-edit'(el) { const a = byId(state.apps, el.dataset.id); if (a) appForm(a); },
+  pair() { pairDialog(); },
+  'copy-pair'() {
+    const done = () => toast('Link kopiert');
+    if (navigator.clipboard) navigator.clipboard.writeText(pairLink()).then(done, () => prompt('Link kopieren:', pairLink()));
+    else prompt('Link kopieren:', pairLink());
+  },
+  'sync-now'() { syncNow(true); },
+  'sync-off'() {
+    if (!confirm('Abgleich auf diesem Gerät trennen? Deine Daten bleiben hier und auf deinen anderen Geräten erhalten.')) return;
+    sync = {}; saveSync(); syncState.error = ''; render(); toast('Getrennt');
+  },
+
   remind() { exportReminders(); },
   'ics-clear'() { state.ics = ''; save(); loadLectures(); toast('Datei entfernt'); },
   'link-del'(el) { state.links.splice(+el.dataset.i, 1); save(); render(); },
@@ -884,7 +1450,10 @@ const act = {
     setTimeout(() => URL.revokeObjectURL(a.href), 2000);
     toast('Sicherung heruntergeladen'); render();
   },
-  reset() { if (confirm('Wirklich alle To-dos, Noten, Prüfungen und Lernzettel in diesem Browser löschen? Das lässt sich nicht rückgängig machen.')) { state = defaults(); save(); applyTheme(); loadLectures(); toast('Alle Daten gelöscht'); } }
+  reset() {
+    if (!confirm(`Wirklich alle To-dos, Noten, Prüfungen und Lernzettel in diesem Browser löschen?${sync.token ? ' Der Geräte-Abgleich wird dabei getrennt, deine anderen Geräte behalten ihre Daten.' : ' Das lässt sich nicht rückgängig machen.'}`)) return;
+    sync = {}; saveSync(); state = defaults(); stamp(true); persist(); applyTheme(); loadLectures(); toast('Alle Daten auf diesem Gerät gelöscht');
+  },
 };
 
 const chg = {
@@ -915,7 +1484,7 @@ const chg = {
         const s = JSON.parse(t);
         if (!s || !Array.isArray(s.todos) || !Array.isArray(s.notes)) throw 0;
         if (!confirm('Die Sicherung ersetzt alle Daten in diesem Browser. Fortfahren?')) return;
-        state = { ...defaults(), ...s, settings: { ...defaults().settings, ...(s.settings || {}) } };
+        state = s; fixState();
         save(); applyTheme(); loadLectures(); toast('Sicherung eingespielt');
       } catch (e) { toast('Diese Datei ist keine Sicherung dieser Website.'); }
     });
@@ -923,6 +1492,7 @@ const chg = {
 };
 
 const inp = {
+  goal(el) { state.settings.goal = el.value.trim(); save(); const o = $('#goalOut'); if (o) o.textContent = goalText(); },
   'note-title'(el) { const n = byId(state.notes, el.dataset.id); if (n) { n.title = el.value; n.updated = Date.now(); save(); const h = $('#notePreview .print-only'); if (h) h.textContent = el.value; } },
   'note-body'(el) {
     const n = byId(state.notes, el.dataset.id); if (!n) return;
@@ -939,6 +1509,8 @@ const inp = {
 };
 
 const sub = {
+  'check-add'(d) { if (d.text.trim()) { state.checks.push({ id: uid(), list: d.list, text: d.text.trim(), done: false, due: '' }); save(); } },
+  'sync-connect'(d) { connectSync(d.token || ''); },
   'todo-quick'(d) { if (d.text.trim()) { state.todos.push({ id: uid(), text: d.text.trim(), module: '', due: '', prio: 'normal', done: false, created: Date.now() }); save(); } },
   'todo-add'(d) { if (d.text.trim()) { state.todos.push({ id: uid(), text: d.text.trim(), module: d.module, due: d.due, prio: 'normal', done: false, created: Date.now() }); save(); toast('To-do hinzugefügt'); } },
   'link-add'(d) { if (/^https?:\/\//i.test(d.url)) { state.links.push({ label: d.label.trim(), url: d.url.trim() }); save(); } else toast('Die Adresse muss mit https:// beginnen.'); }
@@ -952,6 +1524,7 @@ document.addEventListener('click', e => {
 document.addEventListener('keydown', e => {
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[role="button"][data-act]')) { e.preventDefault(); e.target.click(); }
 });
+document.addEventListener('toggle', e => { const d = e.target; if (d.matches && d.matches('details[data-key]')) { ui.planOpen = ui.planOpen || {}; ui.planOpen[d.dataset.key] = d.open; } }, true);
 document.addEventListener('change', e => { const el = e.target.closest('[data-chg]'); if (el && chg[el.dataset.chg]) chg[el.dataset.chg](el); });
 document.addEventListener('input', e => { const el = e.target.closest('[data-inp]'); if (el && inp[el.dataset.inp]) inp[el.dataset.inp](el); });
 document.addEventListener('submit', e => {
@@ -963,10 +1536,17 @@ document.addEventListener('submit', e => {
 });
 window.addEventListener('hashchange', () => { if (dlg.open) dlg.close(); render(); main.focus({ preventScroll: true }); window.scrollTo(0, 0); });
 narrow.addEventListener('change', render);
-window.addEventListener('storage', e => { if (e.key === KEY && e.newValue) { try { state = { ...defaults(), ...JSON.parse(e.newValue) }; render(); } catch (x) { /* ignorieren */ } } });
+window.addEventListener('storage', e => { if (e.key === KEY && e.newValue) { try { state = JSON.parse(e.newValue); fixState(); stamp(true); render(); } catch (x) { /* ignorieren */ } } });
 
 applyTheme();
+stamp(true);
 render();
 loadLectures();
+setInterval(tick, 1000); tick();
+if (sync.token) syncNow();
+setInterval(() => { if (sync.token && document.visibilityState === 'visible') syncNow(); }, 3 * 60 * 1000);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') { if (sync.token) syncNow(); tick(); } });
+window.addEventListener('online', () => { if (sync.token) syncNow(); });
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
 setInterval(() => { const v = route()[0]; if ((v === 'heute' || v === 'kalender') && !dlg.open && document.activeElement.tagName !== 'INPUT') render(); }, 5 * 60 * 1000);
 })();

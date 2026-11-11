@@ -84,3 +84,82 @@ window.NOTE_TEMPLATES = {
     body: '# Karteikarten\n\nJede Zeile mit zwei Doppelpunkten wird zu einer Karte: Frage :: Antwort\n\nWas bedeutet BWL? :: Betriebswirtschaftslehre\n'
   }
 };
+
+/* Offizielle Termine der Hochschule Aalen
+   Quelle: Terminplan Wintersemester 2026/2027 (Stand 18.05.2026), hs-aalen.de
+   Für neue Semester einfach weitere Zeilen ergänzen: [Start, Ende oder null, Titel, wichtig?] */
+window.TERMS_SOURCE = 'https://www.hs-aalen.de/fileadmin/content/dokumente/terminpl%C3%A4ne-semesterpl%C3%A4ne/260518_Terminplan_WiSe_2026_2027.pdf';
+window.TERMS = [
+  ['2026-10-03', null, 'Tag der Deutschen Einheit (vorlesungsfrei)'],
+  ['2026-10-06', null, 'Welcome Day und Vorlesungsbeginn Erstsemester'],
+  ['2026-10-21', null, 'Aalener Industriemesse (9:30 bis 13 Uhr vorlesungsfrei)'],
+  ['2026-10-27', '2026-10-29', 'Campus Days Ostwürttemberg'],
+  ['2026-11-02', '2026-11-13', 'Online-Anmeldung zu den Prüfungen', true],
+  ['2026-11-13', null, 'Letzter Abgabetermin für Anerkennungen', true],
+  ['2026-12-21', null, 'Veröffentlichung des Prüfungsplans', true],
+  ['2026-12-24', '2027-01-03', 'Weihnachtspause (vorlesungsfrei)'],
+  ['2027-01-06', null, 'Heilige Drei Könige (vorlesungsfrei)'],
+  ['2027-01-18', null, 'Letzter Termin zum Abmelden von Prüfungen', true],
+  ['2027-01-30', null, 'Vorlesungsende'],
+  ['2027-02-01', '2027-02-20', 'Prüfungszeitraum', true],
+  ['2027-02-22', '2027-03-13', 'Semesterferien'],
+  ['2027-03-02', null, 'Notenbekanntgabe']
+];
+
+/* Checklisten für Praxissemester, Auslandssemester und Bachelorthesis.
+   Allgemeine Schritte. Die verbindlichen Regeln stehen in deiner Studien- und Prüfungsordnung. */
+window.CHECKLISTS = {
+  praxis: {
+    title: 'Praxissemester',
+    when: '5. Semester',
+    from: 3,
+    intro: 'Plane die Suche etwa ein Jahr vorher. Gute Stellen bei großen Unternehmen sind oft früh vergeben.',
+    items: [
+      'Vorgaben der Hochschule zum Praxissemester lesen (Dauer, Vertrag, Bericht)',
+      'Wunschbranchen und Unternehmen sammeln',
+      'Lebenslauf und Anschreiben aktualisieren',
+      'Bewerbungen verschicken',
+      'Praktikumsvertrag von der Hochschule prüfen lassen',
+      'Betreuer:in an der Hochschule festlegen',
+      'Praxissemesterbericht schreiben und abgeben',
+      'Arbeitszeugnis anfordern'
+    ]
+  },
+  ausland: {
+    title: 'Auslandssemester',
+    when: '6. und 7. Semester',
+    from: 3,
+    intro: 'Die Bewerbungsfristen liegen meist rund ein Jahr vor dem Aufenthalt. Das International Office der Hochschule ist die erste Anlaufstelle.',
+    items: [
+      'Infoveranstaltung des International Office besuchen',
+      'Partnerhochschulen vergleichen und Favoriten notieren',
+      'Bewerbungsfrist der Hochschule notieren',
+      'Sprachnachweis organisieren (z. B. TOEIC, TOEFL oder IELTS)',
+      'Bewerbung beim International Office abgeben',
+      'Learning Agreement mit dem Studiengang abstimmen',
+      'Finanzierung klären (Erasmus+, Auslands-BAföG, PROMOS, Stipendien)',
+      'Auslandskrankenversicherung abschließen',
+      'Reisepass und gegebenenfalls Visum prüfen',
+      'Unterkunft suchen',
+      'Nach der Rückkehr: Anerkennung der Leistungen beantragen'
+    ]
+  },
+  thesis: {
+    title: 'Bachelorthesis',
+    when: '7. Semester',
+    from: 6,
+    intro: 'Trag dir zu jedem Schritt ein Datum ein. Die Termine erscheinen dann im Kalender.',
+    items: [
+      'Themenideen sammeln (gern aus dem Praxissemester)',
+      'Betreuer:in anfragen',
+      'Exposé schreiben',
+      'Thema offiziell anmelden',
+      'Gliederung mit Betreuer:in abstimmen',
+      'Literaturrecherche abschließen',
+      'Rohfassung fertig',
+      'Korrekturlesen lassen',
+      'Drucken und binden',
+      'Abgabe'
+    ]
+  }
+};
