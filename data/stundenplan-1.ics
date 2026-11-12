@@ -113,7 +113,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261012T113000
 DTEND;TZID=Europe/Berlin:20261012T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375512
+UID:-2963401266495107285
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -122,7 +122,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261012T140000
 DTEND;TZID=Europe/Berlin:20261012T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375513
+UID:-2963401266495107284
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -131,7 +131,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261014T130000
 DTEND;TZID=Europe/Berlin:20261014T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375514
+UID:-2963401266495107283
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -140,7 +140,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261014T130000
 DTEND;TZID=Europe/Berlin:20261014T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375515
+UID:-2963401266495107282
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -149,7 +149,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261019T113000
 DTEND;TZID=Europe/Berlin:20261019T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375516
+UID:-2963401266495107281
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -158,7 +158,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261019T140000
 DTEND;TZID=Europe/Berlin:20261019T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375517
+UID:-2963401266495107280
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -167,7 +167,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261021T130000
 DTEND;TZID=Europe/Berlin:20261021T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375518
+UID:-2963401266495107279
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -176,7 +176,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261021T130000
 DTEND;TZID=Europe/Berlin:20261021T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375519
+UID:-2963401266495107278
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -185,7 +185,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261026T113000
 DTEND;TZID=Europe/Berlin:20261026T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375520
+UID:-2963401266495107277
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -194,7 +194,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261026T140000
 DTEND;TZID=Europe/Berlin:20261026T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375521
+UID:-2963401266495107276
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -203,7 +203,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261028T130000
 DTEND;TZID=Europe/Berlin:20261028T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375522
+UID:-2963401266495107275
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -212,7 +212,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261028T130000
 DTEND;TZID=Europe/Berlin:20261028T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375523
+UID:-2963401266495107274
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -221,7 +221,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261102T113000
 DTEND;TZID=Europe/Berlin:20261102T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375524
+UID:-2963401266495107273
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -230,7 +230,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261102T140000
 DTEND;TZID=Europe/Berlin:20261102T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375525
+UID:-2963401266495107272
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -239,7 +239,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261104T130000
 DTEND;TZID=Europe/Berlin:20261104T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375526
+UID:-2963401266495107271
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -248,7 +248,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261104T130000
 DTEND;TZID=Europe/Berlin:20261104T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375527
+UID:-2963401266495107270
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -257,7 +257,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261109T113000
 DTEND;TZID=Europe/Berlin:20261109T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375528
+UID:-2963401266495107269
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -266,7 +266,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261109T140000
 DTEND;TZID=Europe/Berlin:20261109T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375529
+UID:-2963401266495107268
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -275,7 +275,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261111T130000
 DTEND;TZID=Europe/Berlin:20261111T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375530
+UID:-2963401266495107267
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -284,7 +284,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261111T130000
 DTEND;TZID=Europe/Berlin:20261111T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375531
+UID:-2963401266495107266
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -293,7 +293,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261116T113000
 DTEND;TZID=Europe/Berlin:20261116T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375532
+UID:-2963401266495107265
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -302,7 +302,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261116T140000
 DTEND;TZID=Europe/Berlin:20261116T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375533
+UID:-2963401266495107264
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -311,7 +311,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261118T130000
 DTEND;TZID=Europe/Berlin:20261118T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375534
+UID:-2963401266495107263
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -320,7 +320,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261118T130000
 DTEND;TZID=Europe/Berlin:20261118T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375535
+UID:-2963401266495107262
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -329,7 +329,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261123T113000
 DTEND;TZID=Europe/Berlin:20261123T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375536
+UID:-2963401266495107261
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -338,7 +338,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261123T140000
 DTEND;TZID=Europe/Berlin:20261123T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375537
+UID:-2963401266495107260
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -347,7 +347,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261125T130000
 DTEND;TZID=Europe/Berlin:20261125T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375538
+UID:-2963401266495107259
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -356,7 +356,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261125T130000
 DTEND;TZID=Europe/Berlin:20261125T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375539
+UID:-2963401266495107258
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -365,7 +365,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261130T113000
 DTEND;TZID=Europe/Berlin:20261130T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375540
+UID:-2963401266495107257
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -374,7 +374,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261130T140000
 DTEND;TZID=Europe/Berlin:20261130T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375541
+UID:-2963401266495107256
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -383,7 +383,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261202T130000
 DTEND;TZID=Europe/Berlin:20261202T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375542
+UID:-2963401266495107255
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -392,7 +392,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261202T130000
 DTEND;TZID=Europe/Berlin:20261202T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375543
+UID:-2963401266495107254
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -401,7 +401,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261207T113000
 DTEND;TZID=Europe/Berlin:20261207T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375544
+UID:-2963401266495107253
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -410,7 +410,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261207T140000
 DTEND;TZID=Europe/Berlin:20261207T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375545
+UID:-2963401266495107252
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -419,7 +419,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261209T130000
 DTEND;TZID=Europe/Berlin:20261209T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375546
+UID:-2963401266495107251
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -428,7 +428,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261209T130000
 DTEND;TZID=Europe/Berlin:20261209T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375547
+UID:-2963401266495107250
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -437,7 +437,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261214T113000
 DTEND;TZID=Europe/Berlin:20261214T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375548
+UID:-2963401266495107249
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -446,7 +446,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261214T140000
 DTEND;TZID=Europe/Berlin:20261214T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375549
+UID:-2963401266495107248
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -455,7 +455,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261216T130000
 DTEND;TZID=Europe/Berlin:20261216T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375550
+UID:-2963401266495107247
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -464,7 +464,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261216T130000
 DTEND;TZID=Europe/Berlin:20261216T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375551
+UID:-2963401266495107246
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -473,7 +473,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261221T113000
 DTEND;TZID=Europe/Berlin:20261221T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375552
+UID:-2963401266495107245
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -482,7 +482,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261221T140000
 DTEND;TZID=Europe/Berlin:20261221T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375553
+UID:-2963401266495107244
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -491,7 +491,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261223T130000
 DTEND;TZID=Europe/Berlin:20261223T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375554
+UID:-2963401266495107243
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -500,7 +500,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261223T130000
 DTEND;TZID=Europe/Berlin:20261223T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375555
+UID:-2963401266495107242
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -509,7 +509,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270104T113000
 DTEND;TZID=Europe/Berlin:20270104T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375556
+UID:-2963401266495107241
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -518,7 +518,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270104T140000
 DTEND;TZID=Europe/Berlin:20270104T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375557
+UID:-2963401266495107240
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -527,7 +527,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270111T113000
 DTEND;TZID=Europe/Berlin:20270111T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375558
+UID:-2963401266495107239
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -536,7 +536,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270111T140000
 DTEND;TZID=Europe/Berlin:20270111T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375559
+UID:-2963401266495107238
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -545,7 +545,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270113T130000
 DTEND;TZID=Europe/Berlin:20270113T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375560
+UID:-2963401266495107237
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -554,7 +554,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270113T130000
 DTEND;TZID=Europe/Berlin:20270113T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375561
+UID:-2963401266495107236
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -563,7 +563,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270118T113000
 DTEND;TZID=Europe/Berlin:20270118T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375562
+UID:-2963401266495107235
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -572,7 +572,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270118T140000
 DTEND;TZID=Europe/Berlin:20270118T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375563
+UID:-2963401266495107234
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -581,7 +581,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270120T130000
 DTEND;TZID=Europe/Berlin:20270120T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375564
+UID:-2963401266495107233
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -590,7 +590,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270120T130000
 DTEND;TZID=Europe/Berlin:20270120T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375565
+UID:-2963401266495107232
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -599,7 +599,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270125T113000
 DTEND;TZID=Europe/Berlin:20270125T130000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375566
+UID:-2963401266495107231
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -608,7 +608,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270125T140000
 DTEND;TZID=Europe/Berlin:20270125T153000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375567
+UID:-2963401266495107230
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -617,7 +617,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270127T130000
 DTEND;TZID=Europe/Berlin:20270127T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375568
+UID:-2963401266495107229
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:115\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium W\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -626,7 +626,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270127T130000
 DTEND;TZID=Europe/Berlin:20270127T143000
 SUMMARY:Wirtschaftsmathematik (33-90105)
-UID:8047130476304375569
+UID:-2963401266495107228
 URL:https://aalen.instructure.com/enroll/RPNHDX
 LOCATION:112\, Canvas
 DESCRIPTION:Wirtschaftsmathematik (33-90105)\nTutorium IBW\nProf. Dr.-Ing. Axel Löffler\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RPNHDX\n
@@ -635,7 +635,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261028T154500
 DTEND;TZID=Europe/Berlin:20261028T190000
 SUMMARY:TOEIC
-UID:8047130476304375570
+UID:-2963401266495107227
 URL:https://aalen.instructure.com/enroll/DFMMYY
 LOCATION:VFR1\, Canvas
 DESCRIPTION:TOEIC Vorbereitungskurs\nFilomena Pinto Morgado\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DFMMYY\n
@@ -644,7 +644,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261013T080000
 DTEND;TZID=Europe/Berlin:20261013T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375571
+UID:-2963401266495107226
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -653,7 +653,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261013T094500
 DTEND;TZID=Europe/Berlin:20261013T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375572
+UID:-2963401266495107225
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -662,7 +662,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261020T080000
 DTEND;TZID=Europe/Berlin:20261020T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375573
+UID:-2963401266495107224
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -671,7 +671,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261020T094500
 DTEND;TZID=Europe/Berlin:20261020T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375574
+UID:-2963401266495107223
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -680,7 +680,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261027T080000
 DTEND;TZID=Europe/Berlin:20261027T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375575
+UID:-2963401266495107222
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -689,7 +689,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261027T094500
 DTEND;TZID=Europe/Berlin:20261027T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375576
+UID:-2963401266495107221
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -698,7 +698,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261103T080000
 DTEND;TZID=Europe/Berlin:20261103T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375577
+UID:-2963401266495107220
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -707,7 +707,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261103T094500
 DTEND;TZID=Europe/Berlin:20261103T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375578
+UID:-2963401266495107219
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -716,7 +716,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261110T080000
 DTEND;TZID=Europe/Berlin:20261110T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375579
+UID:-2963401266495107218
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -725,7 +725,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261110T094500
 DTEND;TZID=Europe/Berlin:20261110T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375580
+UID:-2963401266495107217
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -734,7 +734,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261117T080000
 DTEND;TZID=Europe/Berlin:20261117T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375581
+UID:-2963401266495107216
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -743,7 +743,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261117T094500
 DTEND;TZID=Europe/Berlin:20261117T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375582
+UID:-2963401266495107215
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -752,7 +752,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261124T080000
 DTEND;TZID=Europe/Berlin:20261124T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375583
+UID:-2963401266495107214
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -761,7 +761,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261124T094500
 DTEND;TZID=Europe/Berlin:20261124T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375584
+UID:-2963401266495107213
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -770,7 +770,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261201T080000
 DTEND;TZID=Europe/Berlin:20261201T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375585
+UID:-2963401266495107212
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -779,7 +779,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261201T094500
 DTEND;TZID=Europe/Berlin:20261201T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375586
+UID:-2963401266495107211
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -788,7 +788,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261208T080000
 DTEND;TZID=Europe/Berlin:20261208T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375587
+UID:-2963401266495107210
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -797,7 +797,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261208T094500
 DTEND;TZID=Europe/Berlin:20261208T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375588
+UID:-2963401266495107209
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -806,7 +806,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261215T080000
 DTEND;TZID=Europe/Berlin:20261215T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375589
+UID:-2963401266495107208
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -815,7 +815,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261215T094500
 DTEND;TZID=Europe/Berlin:20261215T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375590
+UID:-2963401266495107207
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -824,7 +824,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261222T080000
 DTEND;TZID=Europe/Berlin:20261222T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375591
+UID:-2963401266495107206
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -833,7 +833,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261222T094500
 DTEND;TZID=Europe/Berlin:20261222T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375592
+UID:-2963401266495107205
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -842,7 +842,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270105T080000
 DTEND;TZID=Europe/Berlin:20270105T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375593
+UID:-2963401266495107204
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -851,7 +851,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270105T094500
 DTEND;TZID=Europe/Berlin:20270105T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375594
+UID:-2963401266495107203
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -860,7 +860,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270112T080000
 DTEND;TZID=Europe/Berlin:20270112T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375595
+UID:-2963401266495107202
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -869,7 +869,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270112T094500
 DTEND;TZID=Europe/Berlin:20270112T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375596
+UID:-2963401266495107201
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -878,7 +878,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270119T080000
 DTEND;TZID=Europe/Berlin:20270119T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375597
+UID:-2963401266495107200
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -887,7 +887,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270119T094500
 DTEND;TZID=Europe/Berlin:20270119T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375598
+UID:-2963401266495107199
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -896,7 +896,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270126T080000
 DTEND;TZID=Europe/Berlin:20270126T093000
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375599
+UID:-2963401266495107198
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -905,7 +905,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270126T094500
 DTEND;TZID=Europe/Berlin:20270126T111500
 SUMMARY:Einf. in die intern. BWL (33-90101)
-UID:8047130476304375600
+UID:-2963401266495107197
 URL:https://aalen.instructure.com/enroll/8YX38H
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Einführung in die internationale BWL (33-90101)\nProf. Dr. Markus Peter\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/8YX38H\n
@@ -914,7 +914,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261013T140000
 DTEND;TZID=Europe/Berlin:20261013T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375601
+UID:-2963401266495107196
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -923,7 +923,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261013T155000
 DTEND;TZID=Europe/Berlin:20261013T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375602
+UID:-2963401266495107195
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -932,7 +932,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261020T140000
 DTEND;TZID=Europe/Berlin:20261020T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375603
+UID:-2963401266495107194
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:VFR1\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -941,7 +941,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261020T154500
 DTEND;TZID=Europe/Berlin:20261020T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375604
+UID:-2963401266495107193
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:VFR1\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -950,7 +950,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261027T140000
 DTEND;TZID=Europe/Berlin:20261027T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375605
+UID:-2963401266495107192
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -959,7 +959,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261027T155000
 DTEND;TZID=Europe/Berlin:20261027T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375606
+UID:-2963401266495107191
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -968,7 +968,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261110T140000
 DTEND;TZID=Europe/Berlin:20261110T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375607
+UID:-2963401266495107190
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -977,7 +977,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261110T155000
 DTEND;TZID=Europe/Berlin:20261110T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375608
+UID:-2963401266495107189
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -986,7 +986,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261117T140000
 DTEND;TZID=Europe/Berlin:20261117T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375609
+UID:-2963401266495107188
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -995,7 +995,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261117T155000
 DTEND;TZID=Europe/Berlin:20261117T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375610
+UID:-2963401266495107187
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1004,7 +1004,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261124T140000
 DTEND;TZID=Europe/Berlin:20261124T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375611
+UID:-2963401266495107186
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1013,7 +1013,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261124T155000
 DTEND;TZID=Europe/Berlin:20261124T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375612
+UID:-2963401266495107185
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1022,7 +1022,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261201T140000
 DTEND;TZID=Europe/Berlin:20261201T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375613
+UID:-2963401266495107184
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1031,7 +1031,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261201T155000
 DTEND;TZID=Europe/Berlin:20261201T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375614
+UID:-2963401266495107183
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1040,7 +1040,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261208T140000
 DTEND;TZID=Europe/Berlin:20261208T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375615
+UID:-2963401266495107182
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1049,7 +1049,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261208T155000
 DTEND;TZID=Europe/Berlin:20261208T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375616
+UID:-2963401266495107181
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1058,7 +1058,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261215T140000
 DTEND;TZID=Europe/Berlin:20261215T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375617
+UID:-2963401266495107180
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1067,7 +1067,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261215T155000
 DTEND;TZID=Europe/Berlin:20261215T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375618
+UID:-2963401266495107179
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1076,7 +1076,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261222T140000
 DTEND;TZID=Europe/Berlin:20261222T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375619
+UID:-2963401266495107178
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1085,7 +1085,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261222T155000
 DTEND;TZID=Europe/Berlin:20261222T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375620
+UID:-2963401266495107177
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1094,7 +1094,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270105T140000
 DTEND;TZID=Europe/Berlin:20270105T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375621
+UID:-2963401266495107176
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1103,7 +1103,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270105T155000
 DTEND;TZID=Europe/Berlin:20270105T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375622
+UID:-2963401266495107175
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1112,7 +1112,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270112T140000
 DTEND;TZID=Europe/Berlin:20270112T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375623
+UID:-2963401266495107174
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1121,7 +1121,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270112T155000
 DTEND;TZID=Europe/Berlin:20270112T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375624
+UID:-2963401266495107173
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1130,7 +1130,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270119T140000
 DTEND;TZID=Europe/Berlin:20270119T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375625
+UID:-2963401266495107172
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1139,7 +1139,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270119T155000
 DTEND;TZID=Europe/Berlin:20270119T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375626
+UID:-2963401266495107171
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1148,7 +1148,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270126T140000
 DTEND;TZID=Europe/Berlin:20270126T153000
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375627
+UID:-2963401266495107170
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1157,7 +1157,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270126T155000
 DTEND;TZID=Europe/Berlin:20270126T171500
 SUMMARY:Wissenschaftl. Arbeiten (33-90305)
-UID:8047130476304375628
+UID:-2963401266495107169
 URL:https://aalen.instructure.com/enroll/GXP4HF
 LOCATION:AH 0.01 (EG)\, Canvas
 DESCRIPTION:Wissenschaftliches Arbeiten (33-90305)\nJasmina Metzger\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/GXP4HF\n
@@ -1166,7 +1166,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261012T173000
 DTEND;TZID=Europe/Berlin:20261012T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375629
+UID:-2963401266495107168
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1175,7 +1175,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261012T191500
 DTEND;TZID=Europe/Berlin:20261012T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375630
+UID:-2963401266495107167
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1184,7 +1184,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261019T173000
 DTEND;TZID=Europe/Berlin:20261019T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375631
+UID:-2963401266495107166
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1193,7 +1193,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261019T191500
 DTEND;TZID=Europe/Berlin:20261019T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375632
+UID:-2963401266495107165
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1202,7 +1202,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261026T173000
 DTEND;TZID=Europe/Berlin:20261026T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375633
+UID:-2963401266495107164
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1211,7 +1211,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261026T191500
 DTEND;TZID=Europe/Berlin:20261026T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375634
+UID:-2963401266495107163
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1220,7 +1220,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261102T173000
 DTEND;TZID=Europe/Berlin:20261102T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375635
+UID:-2963401266495107162
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1229,7 +1229,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261102T191500
 DTEND;TZID=Europe/Berlin:20261102T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375636
+UID:-2963401266495107161
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1238,7 +1238,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261109T173000
 DTEND;TZID=Europe/Berlin:20261109T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375637
+UID:-2963401266495107160
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1247,7 +1247,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261109T191500
 DTEND;TZID=Europe/Berlin:20261109T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375638
+UID:-2963401266495107159
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1256,7 +1256,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261116T173000
 DTEND;TZID=Europe/Berlin:20261116T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375639
+UID:-2963401266495107158
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1265,7 +1265,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261116T191500
 DTEND;TZID=Europe/Berlin:20261116T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375640
+UID:-2963401266495107157
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1274,7 +1274,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261123T173000
 DTEND;TZID=Europe/Berlin:20261123T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375641
+UID:-2963401266495107156
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1283,7 +1283,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261123T191500
 DTEND;TZID=Europe/Berlin:20261123T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375642
+UID:-2963401266495107155
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1292,7 +1292,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261130T173000
 DTEND;TZID=Europe/Berlin:20261130T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375643
+UID:-2963401266495107154
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1301,7 +1301,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261130T191500
 DTEND;TZID=Europe/Berlin:20261130T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375644
+UID:-2963401266495107153
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1310,7 +1310,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261207T173000
 DTEND;TZID=Europe/Berlin:20261207T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375645
+UID:-2963401266495107152
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1319,7 +1319,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261207T191500
 DTEND;TZID=Europe/Berlin:20261207T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375646
+UID:-2963401266495107151
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1328,7 +1328,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261214T173000
 DTEND;TZID=Europe/Berlin:20261214T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375647
+UID:-2963401266495107150
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1337,7 +1337,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261214T191500
 DTEND;TZID=Europe/Berlin:20261214T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375648
+UID:-2963401266495107149
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1346,7 +1346,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261221T173000
 DTEND;TZID=Europe/Berlin:20261221T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375649
+UID:-2963401266495107148
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1355,7 +1355,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261221T191500
 DTEND;TZID=Europe/Berlin:20261221T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375650
+UID:-2963401266495107147
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1364,7 +1364,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270104T173000
 DTEND;TZID=Europe/Berlin:20270104T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375651
+UID:-2963401266495107146
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1373,7 +1373,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270104T191500
 DTEND;TZID=Europe/Berlin:20270104T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375652
+UID:-2963401266495107145
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1382,7 +1382,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270111T173000
 DTEND;TZID=Europe/Berlin:20270111T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375653
+UID:-2963401266495107144
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1391,7 +1391,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270111T191500
 DTEND;TZID=Europe/Berlin:20270111T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375654
+UID:-2963401266495107143
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1400,7 +1400,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270118T173000
 DTEND;TZID=Europe/Berlin:20270118T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375655
+UID:-2963401266495107142
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1409,7 +1409,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270118T191500
 DTEND;TZID=Europe/Berlin:20270118T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375656
+UID:-2963401266495107141
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1418,7 +1418,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270125T173000
 DTEND;TZID=Europe/Berlin:20270125T190000
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375657
+UID:-2963401266495107140
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1427,7 +1427,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270125T191500
 DTEND;TZID=Europe/Berlin:20270125T204500
 SUMMARY:Intercultural Management (34-90601)
-UID:8047130476304375658
+UID:-2963401266495107139
 URL:https://aalen.instructure.com/enroll/DK8TTA
 LOCATION:202\, Canvas
 DESCRIPTION:Intercultural Management (34-90601)\nProf. Dr. Jae-Aileen Chung\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/DK8TTA\n
@@ -1436,7 +1436,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261024T080000
 DTEND;TZID=Europe/Berlin:20261024T170000
 SUMMARY:Marketing (34-90401)
-UID:8047130476304375659
+UID:-2963401266495107138
 URL:https://aalen.instructure.com/enroll/RKA4XY
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Marketing (34-90401)\nProf. Dr. Christina Ravens\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RKA4XY\n
@@ -1445,7 +1445,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261031T080000
 DTEND;TZID=Europe/Berlin:20261031T170000
 SUMMARY:Marketing (34-90401)
-UID:8047130476304375660
+UID:-2963401266495107137
 URL:https://aalen.instructure.com/enroll/RKA4XY
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Marketing (34-90401)\nProf. Dr. Christina Ravens\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RKA4XY\n
@@ -1454,7 +1454,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261107T080000
 DTEND;TZID=Europe/Berlin:20261107T170000
 SUMMARY:Marketing (34-90401)
-UID:8047130476304375661
+UID:-2963401266495107136
 URL:https://aalen.instructure.com/enroll/RKA4XY
 LOCATION:133 (Audimax)\, Canvas
 DESCRIPTION:Marketing (34-90401)\nProf. Dr. Christina Ravens\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RKA4XY\n
@@ -1463,7 +1463,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261014T094500
 DTEND;TZID=Europe/Berlin:20261014T111500
 SUMMARY:Business English
-UID:8047130476304375662
+UID:-2963401266495107135
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1472,7 +1472,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261014T113000
 DTEND;TZID=Europe/Berlin:20261014T130000
 SUMMARY:Business English
-UID:8047130476304375663
+UID:-2963401266495107134
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1481,7 +1481,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261021T094500
 DTEND;TZID=Europe/Berlin:20261021T111500
 SUMMARY:Business English
-UID:8047130476304375664
+UID:-2963401266495107133
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1490,7 +1490,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261021T113000
 DTEND;TZID=Europe/Berlin:20261021T130000
 SUMMARY:Business English
-UID:8047130476304375665
+UID:-2963401266495107132
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1499,7 +1499,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261028T094500
 DTEND;TZID=Europe/Berlin:20261028T111500
 SUMMARY:Business English
-UID:8047130476304375666
+UID:-2963401266495107131
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1508,7 +1508,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261028T113000
 DTEND;TZID=Europe/Berlin:20261028T130000
 SUMMARY:Business English
-UID:8047130476304375667
+UID:-2963401266495107130
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1517,7 +1517,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261104T094500
 DTEND;TZID=Europe/Berlin:20261104T111500
 SUMMARY:Business English
-UID:8047130476304375668
+UID:-2963401266495107129
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1526,7 +1526,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261104T113000
 DTEND;TZID=Europe/Berlin:20261104T130000
 SUMMARY:Business English
-UID:8047130476304375669
+UID:-2963401266495107128
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1535,7 +1535,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261111T094500
 DTEND;TZID=Europe/Berlin:20261111T111500
 SUMMARY:Business English
-UID:8047130476304375670
+UID:-2963401266495107127
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1544,7 +1544,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261111T113000
 DTEND;TZID=Europe/Berlin:20261111T130000
 SUMMARY:Business English
-UID:8047130476304375671
+UID:-2963401266495107126
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1553,7 +1553,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261118T094500
 DTEND;TZID=Europe/Berlin:20261118T111500
 SUMMARY:Business English
-UID:8047130476304375672
+UID:-2963401266495107125
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1562,7 +1562,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261118T113000
 DTEND;TZID=Europe/Berlin:20261118T130000
 SUMMARY:Business English
-UID:8047130476304375673
+UID:-2963401266495107124
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1571,7 +1571,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261125T094500
 DTEND;TZID=Europe/Berlin:20261125T111500
 SUMMARY:Business English
-UID:8047130476304375674
+UID:-2963401266495107123
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1580,7 +1580,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261125T113000
 DTEND;TZID=Europe/Berlin:20261125T130000
 SUMMARY:Business English
-UID:8047130476304375675
+UID:-2963401266495107122
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1589,7 +1589,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261202T094500
 DTEND;TZID=Europe/Berlin:20261202T111500
 SUMMARY:Business English
-UID:8047130476304375676
+UID:-2963401266495107121
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1598,7 +1598,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261202T113000
 DTEND;TZID=Europe/Berlin:20261202T130000
 SUMMARY:Business English
-UID:8047130476304375677
+UID:-2963401266495107120
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1607,7 +1607,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261209T094500
 DTEND;TZID=Europe/Berlin:20261209T111500
 SUMMARY:Business English
-UID:8047130476304375678
+UID:-2963401266495107119
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1616,7 +1616,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261209T113000
 DTEND;TZID=Europe/Berlin:20261209T130000
 SUMMARY:Business English
-UID:8047130476304375679
+UID:-2963401266495107118
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1625,7 +1625,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261216T094500
 DTEND;TZID=Europe/Berlin:20261216T111500
 SUMMARY:Business English
-UID:8047130476304375680
+UID:-2963401266495107117
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1634,7 +1634,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261216T113000
 DTEND;TZID=Europe/Berlin:20261216T130000
 SUMMARY:Business English
-UID:8047130476304375681
+UID:-2963401266495107116
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1643,7 +1643,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261223T094500
 DTEND;TZID=Europe/Berlin:20261223T111500
 SUMMARY:Business English
-UID:8047130476304375682
+UID:-2963401266495107115
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1652,7 +1652,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261223T113000
 DTEND;TZID=Europe/Berlin:20261223T130000
 SUMMARY:Business English
-UID:8047130476304375683
+UID:-2963401266495107114
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1661,7 +1661,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270113T094500
 DTEND;TZID=Europe/Berlin:20270113T111500
 SUMMARY:Business English
-UID:8047130476304375684
+UID:-2963401266495107113
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1670,7 +1670,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270113T113000
 DTEND;TZID=Europe/Berlin:20270113T130000
 SUMMARY:Business English
-UID:8047130476304375685
+UID:-2963401266495107112
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1679,7 +1679,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270120T094500
 DTEND;TZID=Europe/Berlin:20270120T111500
 SUMMARY:Business English
-UID:8047130476304375686
+UID:-2963401266495107111
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1688,7 +1688,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270120T113000
 DTEND;TZID=Europe/Berlin:20270120T130000
 SUMMARY:Business English
-UID:8047130476304375687
+UID:-2963401266495107110
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1697,7 +1697,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270127T094500
 DTEND;TZID=Europe/Berlin:20270127T111500
 SUMMARY:Business English
-UID:8047130476304375688
+UID:-2963401266495107109
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.01 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1706,7 +1706,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20270127T113000
 DTEND;TZID=Europe/Berlin:20270127T130000
 SUMMARY:Business English
-UID:8047130476304375689
+UID:-2963401266495107108
 URL:https://aalen.instructure.com/enroll/RC3D8D
 LOCATION:AH -1.02 (UG)\, Canvas
 DESCRIPTION:Business English\nAna Konle\nIBW S1\nCanvas: https://aalen.instructure.com/enroll/RC3D8D\n
@@ -1715,7 +1715,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261007T090000
 DTEND;TZID=Europe/Berlin:20261007T150000
 SUMMARY:Erstsemestereinführung
-UID:8047130476304375690
+UID:-2963401266495107107
 LOCATION:WIN -1.11
 DESCRIPTION:Erstsemestereinführung\nIBW S1\n
 END:VEVENT
@@ -1723,7 +1723,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Berlin:20261015T100000
 DTEND;TZID=Europe/Berlin:20261015T110000
 SUMMARY:Infoveranstaltung
-UID:8047130476304375691
+UID:-2963401266495107106
 URL:https://hs-aalen-de.zoom-x.de/j/64773387702?pwd=RDFEclh5WC9oZFFCa3gyTXZQMCt5QT09
 LOCATION:Canvas
 DESCRIPTION:Infoveranstaltung\nInformationsveranstaltung Fremdsprachen\nMiguel Vázquez\nIBW S1\nCanvas: https://hs-aalen-de.zoom-x.de/j/64773387702?pwd=RDFEclh5WC9oZFFCa3gyTXZQMCt5QT09\n
